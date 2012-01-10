@@ -5,6 +5,7 @@ using System.ComponentModel;
 using iMon.DisplayApi;
 using iMon.XBMC.Properties;
 using System.Threading;
+using System.Timers;
 
 namespace iMon.XBMC
 {
@@ -25,6 +26,8 @@ namespace iMon.XBMC
         private int position;
 
         private Dictionary<iMonLcdIcons, bool> icons;
+
+        private System.Timers.Timer discRotation;
 
         #endregion
 
@@ -50,6 +53,11 @@ namespace iMon.XBMC
             {
                 this.icons.Add(icon, false);
             }
+
+            this.discRotation = new System.Timers.Timer();
+            this.discRotation.AutoReset = true;
+            this.discRotation.Interval = 300;
+            this.discRotation.Elapsed += discRotationElapsed;
 
             this.WorkerReportsProgress = false;
             this.WorkerSupportsCancellation = true;
@@ -150,6 +158,16 @@ namespace iMon.XBMC
             }
         }
 
+        public void AddText(string text)
+        {
+            this.AddText(text, text, string.Empty, 0);
+        }
+
+        public void AddText(string text, int delay)
+        {
+            this.AddText(text, text, string.Empty, delay);
+        }
+
         public void AddText(string lcd, string vfdUpper, string vfdLower)
         {
             this.AddText(lcd, vfdUpper, vfdLower, 0);
@@ -231,6 +249,56 @@ namespace iMon.XBMC
             }
         }
 
+        public void ShowDisc(bool bottomCircle)
+        {
+            this.PauseDisc();
+
+            List<iMonLcdIcons> iconList = new List<iMonLcdIcons>() { iMonLcdIcons.DiscBottomLeft, iMonLcdIcons.DiscBottomCenter,
+                                                                     iMonLcdIcons.DiscBottomRight, iMonLcdIcons.DiscMiddleLeft,
+                                                                     iMonLcdIcons.DiscMiddleRight, iMonLcdIcons.DiscTopLeft,
+                                                                     iMonLcdIcons.DiscTopCenter, iMonLcdIcons.DiscTopRight };
+            if (bottomCircle)
+            {
+                iconList.Add(iMonLcdIcons.DiscCircle);
+            }
+
+            this.SetIcons(iconList, true);
+        }
+
+        public void HideDisc()
+        {
+            this.PauseDisc();
+
+            List<iMonLcdIcons> iconList = new List<iMonLcdIcons>() { iMonLcdIcons.DiscBottomLeft, iMonLcdIcons.DiscBottomCenter,
+                                                                     iMonLcdIcons.DiscBottomRight, iMonLcdIcons.DiscMiddleLeft,
+                                                                     iMonLcdIcons.DiscMiddleRight, iMonLcdIcons.DiscTopLeft,
+                                                                     iMonLcdIcons.DiscTopCenter, iMonLcdIcons.DiscTopRight,
+                                                                     iMonLcdIcons.DiscCircle };
+
+            this.SetIcons(iconList, false);
+        }
+
+        public void RotateDisc(bool bottomCircle)
+        {
+            this.HideDisc();
+
+            List<iMonLcdIcons> iconList = new List<iMonLcdIcons>() { iMonLcdIcons.DiscBottomLeft, iMonLcdIcons.DiscBottomRight, 
+                                                                     iMonLcdIcons.DiscTopRight, iMonLcdIcons.DiscTopLeft };
+            if (bottomCircle)
+            {
+                iconList.Add(iMonLcdIcons.DiscCircle);
+            }
+
+            this.SetIcons(iconList, true);
+
+            this.discRotation.Start();
+        }
+
+        public void PauseDisc()
+        {
+            this.discRotation.Stop();
+        }
+
         #endregion
 
         #region Event handlers
@@ -268,6 +336,8 @@ namespace iMon.XBMC
                 {
                     this.lcd = false;
                     this.vfd = false;
+
+                    this.update();
                 }
             }
         }
@@ -294,6 +364,29 @@ namespace iMon.XBMC
             }
         }
 
+        private void discRotationElapsed(object sender, ElapsedEventArgs e)
+        {
+            List<iMonLcdIcons> hideIcons = new List<iMonLcdIcons>();
+            List<iMonLcdIcons> showIcons = new List<iMonLcdIcons>();
+            if (this.icons[iMonLcdIcons.DiscBottomLeft])
+            {
+                hideIcons.AddRange(new iMonLcdIcons[] { iMonLcdIcons.DiscBottomLeft, iMonLcdIcons.DiscBottomRight, 
+                                                        iMonLcdIcons.DiscTopRight, iMonLcdIcons.DiscTopLeft });
+                showIcons.AddRange(new iMonLcdIcons[] { iMonLcdIcons.DiscBottomCenter, iMonLcdIcons.DiscMiddleRight, 
+                                                        iMonLcdIcons.DiscTopCenter, iMonLcdIcons.DiscMiddleLeft });
+            }
+            else
+            {
+                hideIcons.AddRange(new iMonLcdIcons[] { iMonLcdIcons.DiscBottomCenter, iMonLcdIcons.DiscMiddleRight, 
+                                                        iMonLcdIcons.DiscTopCenter, iMonLcdIcons.DiscMiddleLeft });
+                showIcons.AddRange(new iMonLcdIcons[] { iMonLcdIcons.DiscBottomLeft, iMonLcdIcons.DiscBottomRight, 
+                                                        iMonLcdIcons.DiscTopRight, iMonLcdIcons.DiscTopLeft });
+            }
+
+            this.SetIcons(hideIcons, false);
+            this.SetIcons(showIcons, true);
+        }
+
         #endregion
 
         #region Private functions
@@ -306,7 +399,7 @@ namespace iMon.XBMC
                 {
                     Logging.Log("Display Handler", "LCD.SetText: " + text.Lcd);
 
-                    this.imon.LCD.SetText(text.Lcd);
+                    this.imon.LCD.SetText(text.Lcd.Substring(0, text.Lcd.Length < 256 ? text.Lcd.Length : 257));
                 }
                 if (this.vfd)
                 {
@@ -319,7 +412,7 @@ namespace iMon.XBMC
                 {
                     Logging.Log("Display Handler", "Showing text for " + text.Delay + "ms");
 
-                    System.Threading.Thread.Sleep(text.Delay);
+                    Thread.Sleep(text.Delay);
                 }
             }
         }

@@ -5,7 +5,7 @@ using System.ComponentModel;
 
 namespace iMon.XBMC
 {
-    public class NavigationButton : Button
+    internal class NavigationButton : Button
     {
         #region Private variables
 
@@ -111,7 +111,6 @@ namespace iMon.XBMC
         #region Constructors
 
         public NavigationButton()
-            : base()
         { 
             this.defaultImageIndex = -1;
             this.hoverImageIndex = -1;

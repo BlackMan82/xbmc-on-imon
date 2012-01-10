@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Drawing;
 using System.Net.Sockets;
 using System.Collections.Generic;
 
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 using iMon.XBMC.Dialogs;
 using iMon.XBMC.Properties;
 
 using iMon.DisplayApi;
 using XBMC.JsonRpc;
+using System.Runtime.InteropServices;
 
 namespace iMon.XBMC
 {
@@ -20,6 +19,8 @@ namespace iMon.XBMC
         #region Private variables
 
         private MappingDialog mappingDialog;
+
+        private AboutDialog aboutDialog;
 
         #endregion
 
@@ -37,6 +38,27 @@ namespace iMon.XBMC
             this.trayIcon.ContextMenuStrip = this.trayMenu;
 
             this.constructor();
+
+            this.aboutDialog = new AboutDialog();
+        }
+
+        #endregion
+
+        #region Overrides of Control
+
+        [DllImport("user32")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        protected override void WndProc(ref Message msg)
+        {
+            if (msg.Msg == NativeMethods.WM_SHOWME)
+            {
+                this.show();
+                SetForegroundWindow(msg.HWnd);
+
+            }
+
+            base.WndProc(ref msg);
         }
 
         #endregion
@@ -70,7 +92,7 @@ namespace iMon.XBMC
             }
         }
 
-        private void XBMC_Resize(object sender, EventArgs e)
+        private void xbmc_Resize(object sender, EventArgs e)
         {
             if (Settings.Default.GeneralTrayEnabled && Settings.Default.GeneralTrayHideOnMinimize)
             {
@@ -135,12 +157,12 @@ namespace iMon.XBMC
             this.cbGeneralTrayStartMinimized.Enabled = this.cbGeneralTrayEnabled.Checked;
             this.cbGeneralTrayHideOnMinimize.Enabled = this.cbGeneralTrayEnabled.Checked;
             this.cbGeneralTrayHideOnClose.Enabled = this.cbGeneralTrayEnabled.Checked;
+            this.cbGeneralTrayDisableBalloonTips.Enabled = this.cbGeneralTrayEnabled.Checked;
         }
 
         private void trayIcon_DoubleClick(object sender, EventArgs e)
         {
-            this.Show();
-            this.WindowState = FormWindowState.Normal;
+            this.show();
         }
 
         private void trayMenuOpen_Click(object sender, EventArgs e)
@@ -177,9 +199,14 @@ namespace iMon.XBMC
             }
         }
 
-        private void cbXbmcIdleStaticTextEnable_CheckedChanged(object sender, EventArgs e)
+        private void rbXbmcIdleStaticTextEnable_CheckedChanged(object sender, EventArgs e)
         {
-            this.tbXbmcIdleStaticText.Enabled = this.cbXbmcIdleStaticTextEnable.Checked;
+            this.tbXbmcIdleStaticText.Enabled = this.rbXbmcIdleStaticTextEnable.Checked;
+        }
+
+        private void rbXbmcIdleTime_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cbXbmcIdleShowSeconds.Enabled = !this.rbXbmcIdleStaticTextEnable.Checked;
         }
 
         private void cbImonSoundSystemEnable_CheckedChanged(object sender, EventArgs e)
@@ -210,7 +237,7 @@ namespace iMon.XBMC
             using (this.mappingDialog = new MappingDialog("Video Codec Mapping", "Video Codec Icons", "Video Codecs", 
                 JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(Settings.Default.XbmcIconsPlaybackVideoCodecsMappings)))
             {
-                if (this.mappingDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (this.mappingDialog.ShowDialog() == DialogResult.OK)
                 {
                     Settings.Default.XbmcIconsPlaybackVideoCodecsMappings = JsonConvert.SerializeObject(this.mappingDialog.Mapping);
                     this.settingsSave();
@@ -223,12 +250,43 @@ namespace iMon.XBMC
             using (this.mappingDialog = new MappingDialog("Audio Codec Mapping", "Audio Codec Icons", "Audio Codecs",
                 JsonConvert.DeserializeObject<Dictionary<string, List<string>>>(Settings.Default.XbmcIconsPlaybackAudioCodecsMappings)))
             {
-                if (this.mappingDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                if (this.mappingDialog.ShowDialog() == DialogResult.OK)
                 {
                     Settings.Default.XbmcIconsPlaybackAudioCodecsMappings = JsonConvert.SerializeObject(this.mappingDialog.Mapping);
                     this.settingsSave();
                 }
             }
+        }
+
+        private void cbXbmcPlayingDiscEnable_CheckedChanged(object sender, EventArgs e)
+        {
+            this.cbXbmcPlayingDiscRotate.Enabled = this.cbXbmcPlayingDiscEnable.Checked;
+            this.cbXbmcPlayingDiscBottomCircle.Enabled = this.cbXbmcPlayingDiscEnable.Checked;
+        }
+
+        private void rbXbmcMovieSingleText_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tbXbmcMovieSingleText.Enabled = this.rbXbmcMovieSingleText.Checked;
+        }
+
+        private void rbXbmcTvSingleText_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tbXbmcTvSingleText.Enabled = this.rbXbmcTvSingleText.Checked;
+        }
+
+        private void rbXbmcMusicSingleText_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tbXbmcMusicSingleText.Enabled = this.rbXbmcMusicSingleText.Checked;
+        }
+
+        private void rbXbmcMusicVideoSingleText_CheckedChanged(object sender, EventArgs e)
+        {
+            this.tbXbmcMusicVideoSingleText.Enabled = this.rbXbmcMusicVideoSingleText.Checked;
+        }
+
+        private void miAboutXbmcOniMon_Click(object sender, EventArgs e)
+        {
+            this.aboutDialog.ShowDialog();
         }
 
         #endregion
@@ -245,17 +303,17 @@ namespace iMon.XBMC
             this.iMonError(e.Type);
         }
 
-        private void wrapperApi_iMon_LogError(object sender, iMonLogErrorEventArgs e)
+        private static void wrapperApiIMonLogError(object sender, iMonLogErrorEventArgs e)
         {
             Logging.Error("iMON", e.Message, e.Exception);
         }
 
-        private void wrapperApi_iMon_Log(object sender, iMonLogEventArgs e)
+        private static void wrapperApiIMonLog(object sender, iMonLogEventArgs e)
         {
             Logging.Log("iMON", e.Message, null);
         }
 
-        private void wrapperApi_XBMC_LogError(object sender, XbmcJsonRpcLogErrorEventArgs e)
+        private static void wrapperApiXbmcLogError(object sender, XbmcJsonRpcLogErrorEventArgs e)
         {
             if (e.Exception != null && e.Exception is SocketException)
             {
@@ -266,7 +324,7 @@ namespace iMon.XBMC
             Logging.Error("XBMC", e.Message, e.Exception);
         }
 
-        private void wrapperApi_XBMC_Log(object sender, XbmcJsonRpcLogEventArgs e)
+        private static void wrapperApiXbmcLog(object sender, XbmcJsonRpcLogEventArgs e)
         {
             Logging.Log("XBMC", e.Message, null);
         }

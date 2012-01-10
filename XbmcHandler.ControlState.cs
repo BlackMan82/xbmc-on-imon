@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace iMon.XBMC
+﻿namespace iMon.XBMC
 {
     internal partial class XbmcHandler
     {

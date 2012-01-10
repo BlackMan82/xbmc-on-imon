@@ -18,7 +18,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="GeneralStartupConnect" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="GeneralTrayEnabled" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -27,7 +27,7 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="XbmcConnectionInterval" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">10</Value>
+      <Value Profile="(Default)">5</Value>
     </Setting>
     <Setting Name="GeneralTrayHideOnClose" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -96,7 +96,52 @@
       <Value Profile="(Default)">{"DivX":["DivX"],"XviD":["XviD"],"MPG":["MPG","MP4"],"WMV":["WMV"]}</Value>
     </Setting>
     <Setting Name="XbmcIconsPlaybackAudioCodecsMappings" Type="System.String" Scope="User">
-      <Value Profile="(Default)">{"AC3":["AC3"],"DTS":["DTS"],"MPG":["MP1","MP2", "MP3"],"WMA":["WMA"], "MP3":["MP3"], "OGG":["OGG"], "WAV":["WAV"]}</Value>
+      <Value Profile="(Default)">{"AC3":["AC3"],"DTS":["DTS", "DCA"],"MPG":["MP1","MP2"],"WMA":["WMA"], "MP3":["MP3"], "OGG":["OGG"], "WAV":["WAV"]}</Value>
+    </Setting>
+    <Setting Name="GeneralTrayDisableBalloonTips" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="XbmcMovieSingleTextEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcMovieSingleText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%title%</Value>
+    </Setting>
+    <Setting Name="XbmcTvShowTvMediaTypeIcon" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcTvShowTvHdtvIcon" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="XbmcTvSingleText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%show%: S%season%E%episode% - %title%</Value>
+    </Setting>
+    <Setting Name="XbmcTvSingleTextEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcMusicSingleTextEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcMusicSingleText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist%: %title%</Value>
+    </Setting>
+    <Setting Name="XbmcMusicVideoSingleTextEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcMusicVideoSingleText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">%artist%: %title%</Value>
+    </Setting>
+    <Setting Name="XbmcIconsPlaybackDiscEnable" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcIconsPlaybackDiscRotate" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcIconsPlaybackDiscBottomCircle" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="XbmcIdleTimeShowSeconds" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>

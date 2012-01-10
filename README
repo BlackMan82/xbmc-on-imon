@@ -86,7 +86,9 @@ Here is a list of a few known issues. Please DO NOT report these as bugs!
  - The iMON Display stays dark after initialization when it is deactivated in
    iMON Manager
  - The progress bar does not adjust correctly when Fast Forwarding / Rewinding
- - The display freezes for a short time when pressing a button on a remote
+ - The display freezes for a short time when pressing a button on a remote. To
+   avoid this disable the "iMON Remote Control Messages" in "iMON Manager" --> 
+   "iMON Utilities" --> "FrontView" --> "Auto mode"
 
 7. Support
 ==========

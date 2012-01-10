@@ -13,6 +13,7 @@ namespace iMon.XBMC
         internal const string ErrorLog = "error.log";
         internal const string DebugLog = "debug.log";
         internal const string OldLog = ".old";
+        internal const bool iMonNotRespondingLog = false;
 
         #endregion
 
@@ -79,6 +80,10 @@ namespace iMon.XBMC
                 return;
             }
 
+            if (iMonNotRespondingLog == false && message.Contains("iMonNotResponding"))
+            {
+                return;
+            }
             try
             {
                 using (StreamWriter file = new StreamWriter(DebugLog, true, Encoding.UTF8))

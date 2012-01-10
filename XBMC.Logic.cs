@@ -1,6 +1,5 @@
 using System;
 using System.Windows.Forms;
-using System.Threading;
 using System.IO;
 
 using iMon.XBMC.Properties;
@@ -26,7 +25,7 @@ namespace iMon.XBMC
 
         private delegate bool XbmcConnectingDelegate(bool auto);
         XbmcConnectingDelegate xbmcConnectingDeletage;
-        private System.Windows.Forms.Timer xbmcConnectionTimer;
+        private Timer xbmcConnectionTimer;
 
         #endregion
 
@@ -34,6 +33,55 @@ namespace iMon.XBMC
 
         private void constructor()
         {
+            // GUI initialization
+            this.tbXbmcMovieSingleText.Suggestions.Add("%title%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%year%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%rating%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%genre%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%duration%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%mpaa%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%tagline%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%studio%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%director%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%writer%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%outline%");
+            this.tbXbmcMovieSingleText.Suggestions.Add("%plot%");
+
+            this.tbXbmcTvSingleText.Suggestions.Add("%title%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%episode%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%season%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%show%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%year%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%rating%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%duration%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%mpaa%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%studio%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%director%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%writer%");
+            this.tbXbmcTvSingleText.Suggestions.Add("%plot%");
+
+            this.tbXbmcMusicSingleText.Suggestions.Add("%title%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%artist%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%album%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%track%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%year%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%rating%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%genre%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%duration%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%disc%");
+            this.tbXbmcMusicSingleText.Suggestions.Add("%lyrics%");
+
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%title%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%artist%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%album%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%year%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%rating%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%genre%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%duration%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%studio%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%director%");
+            this.tbXbmcMusicVideoSingleText.Suggestions.Add("%plot%");
+
             try
             {
                 if (File.Exists(Logging.ErrorLog))
@@ -56,7 +104,7 @@ namespace iMon.XBMC
             catch (Exception)
             { }
 
-            this.xbmcConnectionTimer = new System.Windows.Forms.Timer();
+            this.xbmcConnectionTimer = new Timer();
             this.xbmcConnectionTimer.Tick += xbmcTryConnect;
 
             this.settingsUpdate();
@@ -67,10 +115,10 @@ namespace iMon.XBMC
             this.imon = new iMonWrapperApi();
             this.imon.StateChanged += wrapperApi_StateChanged;
             this.imon.Error += wrapperApi_Error;
-            this.imon.LogError += wrapperApi_iMon_LogError;
+            this.imon.LogError += wrapperApiIMonLogError;
             if (Settings.Default.GeneralDebugEnable)
             {
-                this.imon.Log += wrapperApi_iMon_Log;
+                this.imon.Log += wrapperApiIMonLog;
             }
 
             this.displayHandler = new DisplayHandler(this.imon);
@@ -79,6 +127,18 @@ namespace iMon.XBMC
             // Setting up XBMC
             this.xbmcConnectingDeletage = new XbmcConnectingDelegate(xbmcConnecting);
             this.xbmcSetup();
+        }
+
+        private void show()
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new MethodInvoker(delegate() { this.show(); }));
+                return;
+            }
+
+            this.Show();
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void close(bool force)
@@ -112,13 +172,17 @@ namespace iMon.XBMC
                 {
                     ((CheckBox)ctrl).CheckedChanged += settingsChanged;
                 }
-                if (ctrl is ComboBox)
+                else if (ctrl is RadioButton)
+                {
+                    ((RadioButton)ctrl).CheckedChanged += settingsChanged;
+                }
+                else if (ctrl is ComboBox)
                 {
                     ((ComboBox)ctrl).SelectedValueChanged += settingsChanged;
                 }
                 else if (ctrl is TextBox)
                 {
-                    ((TextBox)ctrl).Leave += settingsChanged;
+                    ctrl.Leave += settingsChanged;
                 }
                 else if (ctrl is NumericUpDown)
                 {
@@ -133,6 +197,11 @@ namespace iMon.XBMC
 
         private void showBalloonTip(string text, ToolTipIcon icon)
         {
+            if (Settings.Default.GeneralTrayDisableBalloonTips)
+            {
+                return;
+            }
+
             this.trayIcon.ShowBalloonTip(5000, "XBMC on iMON", text, icon);
         }
 
@@ -155,6 +224,7 @@ namespace iMon.XBMC
             this.cbGeneralTrayStartMinimized.Checked = Settings.Default.GeneralTrayStartMinimized;
             this.cbGeneralTrayHideOnMinimize.Checked = Settings.Default.GeneralTrayHideOnMinimize;
             this.cbGeneralTrayHideOnClose.Checked = Settings.Default.GeneralTrayHideOnClose;
+            this.cbGeneralTrayDisableBalloonTips.Checked = Settings.Default.GeneralTrayDisableBalloonTips;
 
             this.cbGeneralDebugEnable.Checked = Settings.Default.GeneralDebugEnable;
 
@@ -175,8 +245,10 @@ namespace iMon.XBMC
             this.tbXbmcConnectionPassword.Text = Settings.Default.XbmcPassword;
             this.nudXbmcConnectionInterval.Value = Settings.Default.XbmcConnectionInterval;
 
-            this.cbXbmcIdleStaticTextEnable.Checked = Settings.Default.XbmcIdleStaticTextEnable;
+            this.rbXbmcIdleStaticTextEnable.Checked = Settings.Default.XbmcIdleStaticTextEnable;
             this.tbXbmcIdleStaticText.Text = Settings.Default.XbmcIdleStaticText;
+            this.rbXbmcIdleTime.Checked = !Settings.Default.XbmcIdleStaticTextEnable;
+            this.cbXbmcIdleShowSeconds.Checked = Settings.Default.XbmcIdleTimeShowSeconds;
 
             this.cbXbmcControlModeEnable.Checked = Settings.Default.XbmcControlModeEnable;
             this.cbXbmcControlModeDisableDuringPlayback.Checked = Settings.Default.XbmcControlModeDisableDuringPlayback;
@@ -190,7 +262,29 @@ namespace iMon.XBMC
             this.cbXbmcPlayingShowMediaType.Checked = Settings.Default.XbmcIconsPlaybackMediaType;
             this.cbXbmcPlayingVideoCodecs.Checked = Settings.Default.XbmcIconsPlaybackVideoCodecs;
             this.cbXbmcPlayingAudioCodecs.Checked = Settings.Default.XbmcIconsPlaybackAudioCodecs;
+            this.cbXbmcPlayingDiscEnable.Checked = Settings.Default.XbmcIconsPlaybackDiscEnable;
+            this.cbXbmcPlayingDiscRotate.Checked = Settings.Default.XbmcIconsPlaybackDiscRotate;
+            this.cbXbmcPlayingDiscBottomCircle.Checked = Settings.Default.XbmcIconsPlaybackDiscBottomCircle;
 
+            this.rbXbmcMovieStayIdle.Checked = !Settings.Default.XbmcMovieSingleTextEnable;
+            this.rbXbmcMovieSingleText.Checked = Settings.Default.XbmcMovieSingleTextEnable;
+            this.tbXbmcMovieSingleText.Text = Settings.Default.XbmcMovieSingleText;
+
+            this.cbXbmcTvMediaTypeIcon.Checked = Settings.Default.XbmcTvShowTvMediaTypeIcon;
+            this.cbXbmcTvShowTvHdtvIcon.Checked = Settings.Default.XbmcTvShowTvHdtvIcon;
+            this.rbXbmcTvStayIdle.Checked = !Settings.Default.XbmcTvSingleTextEnable;
+            this.rbXbmcTvSingleText.Checked = Settings.Default.XbmcTvSingleTextEnable;
+            this.tbXbmcTvSingleText.Text = Settings.Default.XbmcTvSingleText;
+
+            this.rbXbmcMusicStayIdle.Checked = !Settings.Default.XbmcMusicSingleTextEnable;
+            this.rbXbmcMusicSingleText.Checked = Settings.Default.XbmcMusicSingleTextEnable;
+            this.tbXbmcMusicSingleText.Text = Settings.Default.XbmcMusicSingleText;
+
+            this.rbXbmcMusicVideoStayIdle.Checked = !Settings.Default.XbmcMusicVideoSingleTextEnable;
+            this.rbXbmcMusicVideoSingleText.Checked = Settings.Default.XbmcMusicVideoSingleTextEnable;
+            this.tbXbmcMusicVideoSingleText.Text = Settings.Default.XbmcMusicVideoSingleText;
+
+            // Actions
             this.trayIcon.Visible = Settings.Default.GeneralTrayEnabled;
             this.xbmcConnectionTimer.Interval = Settings.Default.XbmcConnectionInterval * 1000;
 
@@ -254,10 +348,10 @@ namespace iMon.XBMC
                     this.xbmc.System.Sleeping -= xbmcShutdown;
                     this.xbmc.System.Suspending -= xbmcShutdown;
                     this.xbmc.Aborted -= xbmcShutdown;
-                    this.xbmc.LogError -= wrapperApi_XBMC_LogError;
+                    this.xbmc.LogError -= wrapperApiXbmcLogError;
                     if (Settings.Default.GeneralDebugEnable)
                     {
-                        this.xbmc.Log -= wrapperApi_XBMC_Log;
+                        this.xbmc.Log -= wrapperApiXbmcLog;
                     }
                     this.xbmc.Dispose();
                 }
@@ -270,13 +364,13 @@ namespace iMon.XBMC
             {
                 if (this.cbGeneralDebugEnable.Checked)
                 {
-                    this.imon.Log += wrapperApi_iMon_Log;
-                    this.xbmc.Log += wrapperApi_XBMC_Log;
+                    this.imon.Log += wrapperApiIMonLog;
+                    this.xbmc.Log += wrapperApiXbmcLog;
                 }
                 else
                 {
-                    this.imon.Log -= wrapperApi_iMon_Log;
-                    this.xbmc.Log -= wrapperApi_XBMC_Log;
+                    this.imon.Log -= wrapperApiIMonLog;
+                    this.xbmc.Log -= wrapperApiXbmcLog;
                 }
             }
 
@@ -288,6 +382,7 @@ namespace iMon.XBMC
             Settings.Default.GeneralTrayStartMinimized = this.cbGeneralTrayStartMinimized.Checked;
             Settings.Default.GeneralTrayHideOnMinimize = this.cbGeneralTrayHideOnMinimize.Checked;
             Settings.Default.GeneralTrayHideOnClose = this.cbGeneralTrayHideOnClose.Checked;
+            Settings.Default.GeneralTrayDisableBalloonTips = this.cbGeneralTrayDisableBalloonTips.Checked;
 
             Settings.Default.GeneralDebugEnable = this.cbGeneralDebugEnable.Checked;
 
@@ -308,8 +403,9 @@ namespace iMon.XBMC
             Settings.Default.XbmcPassword = this.tbXbmcConnectionPassword.Text;
             Settings.Default.XbmcConnectionInterval = Convert.ToInt32(this.nudXbmcConnectionInterval.Value);
 
-            Settings.Default.XbmcIdleStaticTextEnable = this.cbXbmcIdleStaticTextEnable.Checked;
+            Settings.Default.XbmcIdleStaticTextEnable = this.rbXbmcIdleStaticTextEnable.Checked;
             Settings.Default.XbmcIdleStaticText = this.tbXbmcIdleStaticText.Text;
+            Settings.Default.XbmcIdleTimeShowSeconds = this.cbXbmcIdleShowSeconds.Checked;
 
             Settings.Default.XbmcControlModeEnable = this.cbXbmcControlModeEnable.Checked;
             Settings.Default.XbmcControlModeDisableDuringPlayback = this.cbXbmcControlModeDisableDuringPlayback.Checked;
@@ -323,9 +419,27 @@ namespace iMon.XBMC
             Settings.Default.XbmcIconsPlaybackMediaType = this.cbXbmcPlayingShowMediaType.Checked;
             Settings.Default.XbmcIconsPlaybackVideoCodecs = this.cbXbmcPlayingVideoCodecs.Checked;
             Settings.Default.XbmcIconsPlaybackAudioCodecs = this.cbXbmcPlayingAudioCodecs.Checked;
+            Settings.Default.XbmcIconsPlaybackDiscEnable = this.cbXbmcPlayingDiscEnable.Checked;
+            Settings.Default.XbmcIconsPlaybackDiscRotate = this.cbXbmcPlayingDiscRotate.Checked;
+            Settings.Default.XbmcIconsPlaybackDiscBottomCircle = this.cbXbmcPlayingDiscBottomCircle.Checked;
+
+            Settings.Default.XbmcMovieSingleTextEnable = this.rbXbmcMovieSingleText.Checked;
+            Settings.Default.XbmcMovieSingleText = this.tbXbmcMovieSingleText.Text;
+
+            Settings.Default.XbmcTvShowTvMediaTypeIcon = this.cbXbmcTvMediaTypeIcon.Checked;
+            Settings.Default.XbmcTvShowTvHdtvIcon = this.cbXbmcTvShowTvHdtvIcon.Checked;
+            Settings.Default.XbmcTvSingleTextEnable = this.rbXbmcTvSingleText.Checked;
+            Settings.Default.XbmcTvSingleText = this.tbXbmcTvSingleText.Text;
+
+            Settings.Default.XbmcMusicSingleTextEnable = this.rbXbmcMusicSingleText.Checked;
+            Settings.Default.XbmcMusicSingleText = this.tbXbmcMusicSingleText.Text;
+
+            Settings.Default.XbmcMusicVideoSingleTextEnable = this.rbXbmcMusicVideoSingleText.Checked;
+            Settings.Default.XbmcMusicVideoSingleText = this.tbXbmcMusicVideoSingleText.Text;
 
             Settings.Default.Save();
             Logging.Log("Settings saved");
+
             if (xbmcConnectionChanged)
             {
                 this.xbmcSetup();
@@ -485,10 +599,10 @@ namespace iMon.XBMC
             this.xbmc.System.Sleeping += xbmcShutdown;
             this.xbmc.System.Suspending += xbmcShutdown;
             this.xbmc.Aborted += xbmcShutdown;
-            this.xbmc.LogError += wrapperApi_XBMC_LogError;
+            this.xbmc.LogError += wrapperApiXbmcLogError;
             if (Settings.Default.GeneralDebugEnable)
             {
-                this.xbmc.Log += wrapperApi_XBMC_Log;
+                this.xbmc.Log += wrapperApiXbmcLog;
             }
 
             this.xbmcHandler = new XbmcHandler(this.xbmc, this.displayHandler);

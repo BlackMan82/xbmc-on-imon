@@ -159,14 +159,19 @@
             Currently iMON Display API supports VFD and LCD products.
             </summary>
         </member>
+        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.None">
+            <summary>
+            Unknown product
+            </summary>
+        </member>
         <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.VFD">
             <summary>
-            VFD products
+            VFD product
             </summary>
         </member>
         <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.LCD">
             <summary>
-            LCD products
+            LCD product
             </summary>
         </member>
         <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayResult">
