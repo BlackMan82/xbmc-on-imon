@@ -241,6 +241,7 @@ namespace iMon.XBMC
             // XBMC settings
             this.tbXbmcConnectionIp.Text = Settings.Default.XbmcIp;
             this.tbXbmcConnectionPort.Text = Settings.Default.XbmcPort.ToString();
+            this.tbXbmcAnnouncementPort.Text = Settings.Default.XbmcAnnouncementPort.ToString();
             this.tbXbmcConnectionUsername.Text = Settings.Default.XbmcUsername;
             this.tbXbmcConnectionPassword.Text = Settings.Default.XbmcPassword;
             this.nudXbmcConnectionInterval.Value = Settings.Default.XbmcConnectionInterval;
@@ -332,7 +333,8 @@ namespace iMon.XBMC
                 }
             }
             if (Settings.Default.XbmcIp != this.tbXbmcConnectionIp.Text || Settings.Default.XbmcPort != Convert.ToInt32(this.tbXbmcConnectionPort.Text) ||
-                Settings.Default.XbmcUsername != this.tbXbmcConnectionUsername.Text || Settings.Default.XbmcPassword != this.tbXbmcConnectionPassword.Text)
+                Settings.Default.XbmcUsername != this.tbXbmcConnectionUsername.Text || Settings.Default.XbmcPassword != this.tbXbmcConnectionPassword.Text ||
+                Settings.Default.XbmcAnnouncementPort != Convert.ToInt32(this.tbXbmcAnnouncementPort.Text))
             {
                 xbmcConnectionChanged = true;
 
@@ -399,6 +401,7 @@ namespace iMon.XBMC
             // XBMC settings
             Settings.Default.XbmcIp = this.tbXbmcConnectionIp.Text;
             Settings.Default.XbmcPort = Int32.Parse(this.tbXbmcConnectionPort.Text);
+            Settings.Default.XbmcAnnouncementPort = Int32.Parse(this.tbXbmcAnnouncementPort.Text);
             Settings.Default.XbmcUsername = this.tbXbmcConnectionUsername.Text;
             Settings.Default.XbmcPassword = this.tbXbmcConnectionPassword.Text;
             Settings.Default.XbmcConnectionInterval = Convert.ToInt32(this.nudXbmcConnectionInterval.Value);
@@ -634,7 +637,7 @@ namespace iMon.XBMC
 
         private bool xbmcConnecting(bool auto) 
         {
-            return this.xbmc.Open();
+            return this.xbmc.Open(Settings.Default.XbmcAnnouncementPort);
         }
 
         private void xbmcConnectingFinished(IAsyncResult ar)

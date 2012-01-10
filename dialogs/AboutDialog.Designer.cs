@@ -46,12 +46,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lImonDisplayApiWrapperVersion = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bClose
             // 
             this.bClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bClose.Location = new System.Drawing.Point(164, 391);
+            this.bClose.Location = new System.Drawing.Point(162, 409);
             this.bClose.Name = "bClose";
             this.bClose.Size = new System.Drawing.Size(75, 23);
             this.bClose.TabIndex = 0;
@@ -61,7 +62,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label1.Location = new System.Drawing.Point(117, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 16);
@@ -72,7 +73,7 @@
             // lVersion
             // 
             this.lVersion.AutoSize = true;
-            this.lVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lVersion.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lVersion.Location = new System.Drawing.Point(174, 31);
             this.lVersion.Name = "lVersion";
             this.lVersion.Size = new System.Drawing.Size(54, 13);
@@ -82,7 +83,7 @@
             // lCopyright
             // 
             this.lCopyright.AutoSize = true;
-            this.lCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.lCopyright.Location = new System.Drawing.Point(93, 174);
             this.lCopyright.Name = "lCopyright";
             this.lCopyright.Size = new System.Drawing.Size(203, 13);
@@ -92,10 +93,10 @@
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles) (((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 196);
+            this.label3.Location = new System.Drawing.Point(10, 214);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(378, 169);
             this.label3.TabIndex = 4;
@@ -108,7 +109,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.AlwaysUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Blue;
-            this.linkLabel1.Location = new System.Drawing.Point(109, 365);
+            this.linkLabel1.Location = new System.Drawing.Point(107, 383);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(184, 13);
             this.linkLabel1.TabIndex = 5;
@@ -140,10 +141,10 @@
             this.linkLabel3.LinkColor = System.Drawing.Color.Blue;
             this.linkLabel3.Location = new System.Drawing.Point(108, 44);
             this.linkLabel3.Name = "linkLabel3";
-            this.linkLabel3.Size = new System.Drawing.Size(229, 13);
+            this.linkLabel3.Size = new System.Drawing.Size(225, 13);
             this.linkLabel3.TabIndex = 7;
             this.linkLabel3.TabStop = true;
-            this.linkLabel3.Text = "https://sourceforge.net/projects/xbmc-on-imon";
+            this.linkLabel3.Text = "http://github.com/BlackMan82/xbmc-on-imon";
             this.linkLabel3.VisitedLinkColor = System.Drawing.Color.Blue;
             this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.openLink);
             // 
@@ -168,7 +169,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
             this.label6.Location = new System.Drawing.Point(139, 85);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(125, 13);
@@ -229,13 +230,25 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "iMON Display API Wrapper#";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
+            this.label2.Location = new System.Drawing.Point(93, 187);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(173, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Edited by Martin Gruber 2011";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // AboutDialog
             // 
             this.AcceptButton = this.bClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bClose;
-            this.ClientSize = new System.Drawing.Size(400, 426);
+            this.ClientSize = new System.Drawing.Size(400, 442);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.lImonDisplayApiWrapperVersion);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lImonDisplayApiVersion);
@@ -254,7 +267,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.bClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "AboutDialog";
@@ -285,5 +298,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lImonDisplayApiWrapperVersion;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label2;
     }
 }

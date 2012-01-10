@@ -90,6 +90,30 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbXbmcConnectionIp = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbXbmcMovieStayIdle = new System.Windows.Forms.RadioButton();
+            this.rbXbmcMovieSingleText = new System.Windows.Forms.RadioButton();
+            this.groupBox16 = new System.Windows.Forms.GroupBox();
+            this.cbXbmcControlModeShowWindow = new System.Windows.Forms.CheckBox();
+            this.cbXbmcControlModeRemoveBrackets = new System.Windows.Forms.CheckBox();
+            this.cbXbmcControlModeDisableDuringPlayback = new System.Windows.Forms.CheckBox();
+            this.cbXbmcControlModeEnable = new System.Windows.Forms.CheckBox();
+            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.rbXbmcTvStayIdle = new System.Windows.Forms.RadioButton();
+            this.rbXbmcTvSingleText = new System.Windows.Forms.RadioButton();
+            this.cbXbmcTvShowTvHdtvIcon = new System.Windows.Forms.CheckBox();
+            this.cbXbmcTvMediaTypeIcon = new System.Windows.Forms.CheckBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.rbXbmcMusicVideoStayIdle = new System.Windows.Forms.RadioButton();
+            this.rbXbmcMusicVideoSingleText = new System.Windows.Forms.RadioButton();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.rbXbmcMusicStayIdle = new System.Windows.Forms.RadioButton();
+            this.rbXbmcMusicSingleText = new System.Windows.Forms.RadioButton();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.cbXbmcIdleShowSeconds = new System.Windows.Forms.CheckBox();
+            this.rbXbmcIdleTime = new System.Windows.Forms.RadioButton();
+            this.rbXbmcIdleStaticTextEnable = new System.Windows.Forms.RadioButton();
+            this.tbXbmcIdleStaticText = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.cbXbmcPlayingDiscBottomCircle = new System.Windows.Forms.CheckBox();
             this.cbXbmcPlayingDiscRotate = new System.Windows.Forms.CheckBox();
@@ -102,29 +126,6 @@
             this.cbXbmcPlayingVideoCodecs = new System.Windows.Forms.CheckBox();
             this.cbXbmcPlayingShowMediaType = new System.Windows.Forms.CheckBox();
             this.cbXbmcPlayingShowProgress = new System.Windows.Forms.CheckBox();
-            this.groupBox16 = new System.Windows.Forms.GroupBox();
-            this.cbXbmcControlModeShowWindow = new System.Windows.Forms.CheckBox();
-            this.cbXbmcControlModeRemoveBrackets = new System.Windows.Forms.CheckBox();
-            this.cbXbmcControlModeDisableDuringPlayback = new System.Windows.Forms.CheckBox();
-            this.cbXbmcControlModeEnable = new System.Windows.Forms.CheckBox();
-            this.groupBox10 = new System.Windows.Forms.GroupBox();
-            this.rbXbmcMusicStayIdle = new System.Windows.Forms.RadioButton();
-            this.rbXbmcMusicSingleText = new System.Windows.Forms.RadioButton();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.rbXbmcMusicVideoStayIdle = new System.Windows.Forms.RadioButton();
-            this.rbXbmcMusicVideoSingleText = new System.Windows.Forms.RadioButton();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
-            this.rbXbmcTvStayIdle = new System.Windows.Forms.RadioButton();
-            this.rbXbmcTvSingleText = new System.Windows.Forms.RadioButton();
-            this.cbXbmcTvShowTvHdtvIcon = new System.Windows.Forms.CheckBox();
-            this.cbXbmcTvMediaTypeIcon = new System.Windows.Forms.CheckBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.rbXbmcIdleTime = new System.Windows.Forms.RadioButton();
-            this.rbXbmcIdleStaticTextEnable = new System.Windows.Forms.RadioButton();
-            this.tbXbmcIdleStaticText = new System.Windows.Forms.TextBox();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.rbXbmcMovieStayIdle = new System.Windows.Forms.RadioButton();
-            this.rbXbmcMovieSingleText = new System.Windows.Forms.RadioButton();
             this.trayIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.trayMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.trayMenuOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,15 +134,17 @@
             this.trayMenuImon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.trayMenuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbXbmcIdleShowSeconds = new System.Windows.Forms.CheckBox();
+            this.tbXbmcAnnouncementPort = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.bNavigationXbmc = new iMon.XBMC.NavigationButton();
             this.bNavigationImon = new iMon.XBMC.NavigationButton();
             this.bNavigationGeneral = new iMon.XBMC.NavigationButton();
+            this.tbXbmcMovieSingleText = new iMon.XBMC.SuggestionBox();
             this.tbXbmcTvSingleText = new iMon.XBMC.SuggestionBox();
             this.tbXbmcMusicVideoSingleText = new iMon.XBMC.SuggestionBox();
-            this.tbXbmcMovieSingleText = new iMon.XBMC.SuggestionBox();
             this.tbXbmcMusicSingleText = new iMon.XBMC.SuggestionBox();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.splitter)).BeginInit();
             this.splitter.Panel1.SuspendLayout();
             this.splitter.Panel2.SuspendLayout();
             this.splitter.SuspendLayout();
@@ -150,7 +153,7 @@
             this.tpImon.SuspendLayout();
             this.groupBox14.SuspendLayout();
             this.groupBox13.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImonLcdScrollingDelay)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudImonLcdScrollingDelay)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.tpGeneral.SuspendLayout();
             this.groupBox15.SuspendLayout();
@@ -158,16 +161,16 @@
             this.groupBox2.SuspendLayout();
             this.tpXBMC.SuspendLayout();
             this.groupBox7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXbmcIconsUpdateInterval)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudXbmcIconsUpdateInterval)).BeginInit();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXbmcConnectionInterval)).BeginInit();
-            this.groupBox6.SuspendLayout();
-            this.groupBox16.SuspendLayout();
-            this.groupBox10.SuspendLayout();
-            this.groupBox11.SuspendLayout();
-            this.groupBox9.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.nudXbmcConnectionInterval)).BeginInit();
             this.groupBox8.SuspendLayout();
+            this.groupBox16.SuspendLayout();
+            this.groupBox9.SuspendLayout();
+            this.groupBox11.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.trayMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,7 +199,7 @@
             // miGeneralClose
             // 
             this.miGeneralClose.Name = "miGeneralClose";
-            this.miGeneralClose.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.miGeneralClose.ShortcutKeys = ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.miGeneralClose.Size = new System.Drawing.Size(148, 22);
             this.miGeneralClose.Text = "Close";
             this.miGeneralClose.Click += new System.EventHandler(this.miGeneralClose_Click);
@@ -310,7 +313,7 @@
             // 
             // iLOptions
             // 
-            this.iLOptions.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("iLOptions.ImageStream")));
+            this.iLOptions.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject("iLOptions.ImageStream")));
             this.iLOptions.TransparentColor = System.Drawing.Color.Transparent;
             this.iLOptions.Images.SetKeyName(0, "General");
             this.iLOptions.Images.SetKeyName(1, "GeneralActive");
@@ -324,7 +327,7 @@
             // 
             // tabOptions
             // 
-            this.tabOptions.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabOptions.Anchor = ((System.Windows.Forms.AnchorStyles) ((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.tabOptions.Controls.Add(this.tpImon);
             this.tabOptions.Controls.Add(this.tpGeneral);
             this.tabOptions.Controls.Add(this.tpXBMC);
@@ -712,6 +715,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tbXbmcAnnouncementPort);
+            this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.nudXbmcConnectionInterval);
             this.groupBox1.Controls.Add(this.label5);
@@ -725,7 +730,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(10, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(375, 100);
+            this.groupBox1.Size = new System.Drawing.Size(375, 125);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection";
@@ -833,6 +838,281 @@
             this.label1.Size = new System.Drawing.Size(20, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "IP:";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.rbXbmcMovieStayIdle);
+            this.groupBox8.Controls.Add(this.tbXbmcMovieSingleText);
+            this.groupBox8.Controls.Add(this.rbXbmcMovieSingleText);
+            this.groupBox8.Location = new System.Drawing.Point(10, 535);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(375, 90);
+            this.groupBox8.TabIndex = 14;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "Playing a movie";
+            // 
+            // rbXbmcMovieStayIdle
+            // 
+            this.rbXbmcMovieStayIdle.AutoSize = true;
+            this.rbXbmcMovieStayIdle.Location = new System.Drawing.Point(6, 66);
+            this.rbXbmcMovieStayIdle.Name = "rbXbmcMovieStayIdle";
+            this.rbXbmcMovieStayIdle.Size = new System.Drawing.Size(66, 17);
+            this.rbXbmcMovieStayIdle.TabIndex = 6;
+            this.rbXbmcMovieStayIdle.TabStop = true;
+            this.rbXbmcMovieStayIdle.Text = "Stay Idle";
+            this.rbXbmcMovieStayIdle.UseVisualStyleBackColor = true;
+            // 
+            // rbXbmcMovieSingleText
+            // 
+            this.rbXbmcMovieSingleText.AutoSize = true;
+            this.rbXbmcMovieSingleText.Location = new System.Drawing.Point(6, 19);
+            this.rbXbmcMovieSingleText.Name = "rbXbmcMovieSingleText";
+            this.rbXbmcMovieSingleText.Size = new System.Drawing.Size(102, 17);
+            this.rbXbmcMovieSingleText.TabIndex = 2;
+            this.rbXbmcMovieSingleText.TabStop = true;
+            this.rbXbmcMovieSingleText.Text = "Show single text";
+            this.rbXbmcMovieSingleText.UseVisualStyleBackColor = true;
+            this.rbXbmcMovieSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMovieSingleText_CheckedChanged);
+            // 
+            // groupBox16
+            // 
+            this.groupBox16.Controls.Add(this.cbXbmcControlModeShowWindow);
+            this.groupBox16.Controls.Add(this.cbXbmcControlModeRemoveBrackets);
+            this.groupBox16.Controls.Add(this.cbXbmcControlModeDisableDuringPlayback);
+            this.groupBox16.Controls.Add(this.cbXbmcControlModeEnable);
+            this.groupBox16.Location = new System.Drawing.Point(10, 189);
+            this.groupBox16.Name = "groupBox16";
+            this.groupBox16.Size = new System.Drawing.Size(375, 92);
+            this.groupBox16.TabIndex = 19;
+            this.groupBox16.TabStop = false;
+            this.groupBox16.Text = "Control mode (highly experimental)";
+            // 
+            // cbXbmcControlModeShowWindow
+            // 
+            this.cbXbmcControlModeShowWindow.AutoSize = true;
+            this.cbXbmcControlModeShowWindow.Enabled = false;
+            this.cbXbmcControlModeShowWindow.Location = new System.Drawing.Point(192, 66);
+            this.cbXbmcControlModeShowWindow.Name = "cbXbmcControlModeShowWindow";
+            this.cbXbmcControlModeShowWindow.Size = new System.Drawing.Size(121, 17);
+            this.cbXbmcControlModeShowWindow.TabIndex = 13;
+            this.cbXbmcControlModeShowWindow.Text = "Show window name";
+            this.cbXbmcControlModeShowWindow.UseVisualStyleBackColor = true;
+            // 
+            // cbXbmcControlModeRemoveBrackets
+            // 
+            this.cbXbmcControlModeRemoveBrackets.AutoSize = true;
+            this.cbXbmcControlModeRemoveBrackets.Enabled = false;
+            this.cbXbmcControlModeRemoveBrackets.Location = new System.Drawing.Point(36, 66);
+            this.cbXbmcControlModeRemoveBrackets.Name = "cbXbmcControlModeRemoveBrackets";
+            this.cbXbmcControlModeRemoveBrackets.Size = new System.Drawing.Size(122, 17);
+            this.cbXbmcControlModeRemoveBrackets.TabIndex = 14;
+            this.cbXbmcControlModeRemoveBrackets.Text = "Remove brackets [ ]";
+            this.cbXbmcControlModeRemoveBrackets.UseVisualStyleBackColor = true;
+            // 
+            // cbXbmcControlModeDisableDuringPlayback
+            // 
+            this.cbXbmcControlModeDisableDuringPlayback.AutoSize = true;
+            this.cbXbmcControlModeDisableDuringPlayback.Enabled = false;
+            this.cbXbmcControlModeDisableDuringPlayback.Location = new System.Drawing.Point(36, 43);
+            this.cbXbmcControlModeDisableDuringPlayback.Name = "cbXbmcControlModeDisableDuringPlayback";
+            this.cbXbmcControlModeDisableDuringPlayback.Size = new System.Drawing.Size(139, 17);
+            this.cbXbmcControlModeDisableDuringPlayback.TabIndex = 1;
+            this.cbXbmcControlModeDisableDuringPlayback.Text = "Disable during playback";
+            this.cbXbmcControlModeDisableDuringPlayback.UseVisualStyleBackColor = true;
+            // 
+            // cbXbmcControlModeEnable
+            // 
+            this.cbXbmcControlModeEnable.AutoSize = true;
+            this.cbXbmcControlModeEnable.Location = new System.Drawing.Point(8, 20);
+            this.cbXbmcControlModeEnable.Name = "cbXbmcControlModeEnable";
+            this.cbXbmcControlModeEnable.Size = new System.Drawing.Size(59, 17);
+            this.cbXbmcControlModeEnable.TabIndex = 0;
+            this.cbXbmcControlModeEnable.Text = "Enable";
+            this.cbXbmcControlModeEnable.UseVisualStyleBackColor = true;
+            this.cbXbmcControlModeEnable.CheckedChanged += new System.EventHandler(this.cbXbmcControlModeEnable_CheckedChanged);
+            // 
+            // groupBox9
+            // 
+            this.groupBox9.Controls.Add(this.rbXbmcTvStayIdle);
+            this.groupBox9.Controls.Add(this.tbXbmcTvSingleText);
+            this.groupBox9.Controls.Add(this.rbXbmcTvSingleText);
+            this.groupBox9.Controls.Add(this.cbXbmcTvShowTvHdtvIcon);
+            this.groupBox9.Controls.Add(this.cbXbmcTvMediaTypeIcon);
+            this.groupBox9.Location = new System.Drawing.Point(10, 631);
+            this.groupBox9.Name = "groupBox9";
+            this.groupBox9.Size = new System.Drawing.Size(375, 114);
+            this.groupBox9.TabIndex = 15;
+            this.groupBox9.TabStop = false;
+            this.groupBox9.Text = "Playing a tv episode";
+            // 
+            // rbXbmcTvStayIdle
+            // 
+            this.rbXbmcTvStayIdle.AutoSize = true;
+            this.rbXbmcTvStayIdle.Location = new System.Drawing.Point(6, 90);
+            this.rbXbmcTvStayIdle.Name = "rbXbmcTvStayIdle";
+            this.rbXbmcTvStayIdle.Size = new System.Drawing.Size(66, 17);
+            this.rbXbmcTvStayIdle.TabIndex = 10;
+            this.rbXbmcTvStayIdle.TabStop = true;
+            this.rbXbmcTvStayIdle.Text = "Stay Idle";
+            this.rbXbmcTvStayIdle.UseVisualStyleBackColor = true;
+            // 
+            // rbXbmcTvSingleText
+            // 
+            this.rbXbmcTvSingleText.AutoSize = true;
+            this.rbXbmcTvSingleText.Location = new System.Drawing.Point(6, 43);
+            this.rbXbmcTvSingleText.Name = "rbXbmcTvSingleText";
+            this.rbXbmcTvSingleText.Size = new System.Drawing.Size(102, 17);
+            this.rbXbmcTvSingleText.TabIndex = 6;
+            this.rbXbmcTvSingleText.TabStop = true;
+            this.rbXbmcTvSingleText.Text = "Show single text";
+            this.rbXbmcTvSingleText.UseVisualStyleBackColor = true;
+            this.rbXbmcTvSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcTvSingleText_CheckedChanged);
+            // 
+            // cbXbmcTvShowTvHdtvIcon
+            // 
+            this.cbXbmcTvShowTvHdtvIcon.AutoSize = true;
+            this.cbXbmcTvShowTvHdtvIcon.Location = new System.Drawing.Point(191, 20);
+            this.cbXbmcTvShowTvHdtvIcon.Name = "cbXbmcTvShowTvHdtvIcon";
+            this.cbXbmcTvShowTvHdtvIcon.Size = new System.Drawing.Size(134, 17);
+            this.cbXbmcTvShowTvHdtvIcon.TabIndex = 1;
+            this.cbXbmcTvShowTvHdtvIcon.Text = "Show TV / HDTV icon";
+            this.cbXbmcTvShowTvHdtvIcon.UseVisualStyleBackColor = true;
+            // 
+            // cbXbmcTvMediaTypeIcon
+            // 
+            this.cbXbmcTvMediaTypeIcon.AutoSize = true;
+            this.cbXbmcTvMediaTypeIcon.Location = new System.Drawing.Point(7, 20);
+            this.cbXbmcTvMediaTypeIcon.Name = "cbXbmcTvMediaTypeIcon";
+            this.cbXbmcTvMediaTypeIcon.Size = new System.Drawing.Size(147, 17);
+            this.cbXbmcTvMediaTypeIcon.TabIndex = 0;
+            this.cbXbmcTvMediaTypeIcon.Text = "Show TV media type icon";
+            this.cbXbmcTvMediaTypeIcon.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.rbXbmcMusicVideoStayIdle);
+            this.groupBox11.Controls.Add(this.tbXbmcMusicVideoSingleText);
+            this.groupBox11.Controls.Add(this.rbXbmcMusicVideoSingleText);
+            this.groupBox11.Location = new System.Drawing.Point(10, 847);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(375, 90);
+            this.groupBox11.TabIndex = 17;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Playing a music video";
+            // 
+            // rbXbmcMusicVideoStayIdle
+            // 
+            this.rbXbmcMusicVideoStayIdle.AutoSize = true;
+            this.rbXbmcMusicVideoStayIdle.Location = new System.Drawing.Point(6, 66);
+            this.rbXbmcMusicVideoStayIdle.Name = "rbXbmcMusicVideoStayIdle";
+            this.rbXbmcMusicVideoStayIdle.Size = new System.Drawing.Size(66, 17);
+            this.rbXbmcMusicVideoStayIdle.TabIndex = 10;
+            this.rbXbmcMusicVideoStayIdle.TabStop = true;
+            this.rbXbmcMusicVideoStayIdle.Text = "Stay Idle";
+            this.rbXbmcMusicVideoStayIdle.UseVisualStyleBackColor = true;
+            // 
+            // rbXbmcMusicVideoSingleText
+            // 
+            this.rbXbmcMusicVideoSingleText.AutoSize = true;
+            this.rbXbmcMusicVideoSingleText.Location = new System.Drawing.Point(6, 19);
+            this.rbXbmcMusicVideoSingleText.Name = "rbXbmcMusicVideoSingleText";
+            this.rbXbmcMusicVideoSingleText.Size = new System.Drawing.Size(102, 17);
+            this.rbXbmcMusicVideoSingleText.TabIndex = 6;
+            this.rbXbmcMusicVideoSingleText.TabStop = true;
+            this.rbXbmcMusicVideoSingleText.Text = "Show single text";
+            this.rbXbmcMusicVideoSingleText.UseVisualStyleBackColor = true;
+            this.rbXbmcMusicVideoSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMusicVideoSingleText_CheckedChanged);
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.rbXbmcMusicStayIdle);
+            this.groupBox10.Controls.Add(this.tbXbmcMusicSingleText);
+            this.groupBox10.Controls.Add(this.rbXbmcMusicSingleText);
+            this.groupBox10.Location = new System.Drawing.Point(10, 751);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(375, 90);
+            this.groupBox10.TabIndex = 16;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Playing a song";
+            // 
+            // rbXbmcMusicStayIdle
+            // 
+            this.rbXbmcMusicStayIdle.AutoSize = true;
+            this.rbXbmcMusicStayIdle.Location = new System.Drawing.Point(6, 66);
+            this.rbXbmcMusicStayIdle.Name = "rbXbmcMusicStayIdle";
+            this.rbXbmcMusicStayIdle.Size = new System.Drawing.Size(66, 17);
+            this.rbXbmcMusicStayIdle.TabIndex = 10;
+            this.rbXbmcMusicStayIdle.TabStop = true;
+            this.rbXbmcMusicStayIdle.Text = "Stay Idle";
+            this.rbXbmcMusicStayIdle.UseVisualStyleBackColor = true;
+            // 
+            // rbXbmcMusicSingleText
+            // 
+            this.rbXbmcMusicSingleText.AutoSize = true;
+            this.rbXbmcMusicSingleText.Location = new System.Drawing.Point(6, 19);
+            this.rbXbmcMusicSingleText.Name = "rbXbmcMusicSingleText";
+            this.rbXbmcMusicSingleText.Size = new System.Drawing.Size(102, 17);
+            this.rbXbmcMusicSingleText.TabIndex = 6;
+            this.rbXbmcMusicSingleText.TabStop = true;
+            this.rbXbmcMusicSingleText.Text = "Show single text";
+            this.rbXbmcMusicSingleText.UseVisualStyleBackColor = true;
+            this.rbXbmcMusicSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMusicSingleText_CheckedChanged);
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.cbXbmcIdleShowSeconds);
+            this.groupBox5.Controls.Add(this.rbXbmcIdleTime);
+            this.groupBox5.Controls.Add(this.rbXbmcIdleStaticTextEnable);
+            this.groupBox5.Controls.Add(this.tbXbmcIdleStaticText);
+            this.groupBox5.Location = new System.Drawing.Point(10, 112);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(375, 71);
+            this.groupBox5.TabIndex = 11;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Idle";
+            // 
+            // cbXbmcIdleShowSeconds
+            // 
+            this.cbXbmcIdleShowSeconds.AutoSize = true;
+            this.cbXbmcIdleShowSeconds.Enabled = false;
+            this.cbXbmcIdleShowSeconds.Location = new System.Drawing.Point(219, 45);
+            this.cbXbmcIdleShowSeconds.Name = "cbXbmcIdleShowSeconds";
+            this.cbXbmcIdleShowSeconds.Size = new System.Drawing.Size(96, 17);
+            this.cbXbmcIdleShowSeconds.TabIndex = 4;
+            this.cbXbmcIdleShowSeconds.Text = "Show seconds";
+            this.cbXbmcIdleShowSeconds.UseVisualStyleBackColor = true;
+            // 
+            // rbXbmcIdleTime
+            // 
+            this.rbXbmcIdleTime.AutoSize = true;
+            this.rbXbmcIdleTime.Location = new System.Drawing.Point(192, 19);
+            this.rbXbmcIdleTime.Name = "rbXbmcIdleTime";
+            this.rbXbmcIdleTime.Size = new System.Drawing.Size(110, 17);
+            this.rbXbmcIdleTime.TabIndex = 3;
+            this.rbXbmcIdleTime.TabStop = true;
+            this.rbXbmcIdleTime.Text = "Show current time";
+            this.rbXbmcIdleTime.UseVisualStyleBackColor = true;
+            this.rbXbmcIdleTime.CheckedChanged += new System.EventHandler(this.rbXbmcIdleTime_CheckedChanged);
+            // 
+            // rbXbmcIdleStaticTextEnable
+            // 
+            this.rbXbmcIdleStaticTextEnable.AutoSize = true;
+            this.rbXbmcIdleStaticTextEnable.Location = new System.Drawing.Point(7, 19);
+            this.rbXbmcIdleStaticTextEnable.Name = "rbXbmcIdleStaticTextEnable";
+            this.rbXbmcIdleStaticTextEnable.Size = new System.Drawing.Size(100, 17);
+            this.rbXbmcIdleStaticTextEnable.TabIndex = 1;
+            this.rbXbmcIdleStaticTextEnable.TabStop = true;
+            this.rbXbmcIdleStaticTextEnable.Text = "Show static text";
+            this.rbXbmcIdleStaticTextEnable.UseVisualStyleBackColor = true;
+            this.rbXbmcIdleStaticTextEnable.CheckedChanged += new System.EventHandler(this.rbXbmcIdleStaticTextEnable_CheckedChanged);
+            // 
+            // tbXbmcIdleStaticText
+            // 
+            this.tbXbmcIdleStaticText.Enabled = false;
+            this.tbXbmcIdleStaticText.Location = new System.Drawing.Point(34, 43);
+            this.tbXbmcIdleStaticText.Name = "tbXbmcIdleStaticText";
+            this.tbXbmcIdleStaticText.Size = new System.Drawing.Size(149, 20);
+            this.tbXbmcIdleStaticText.TabIndex = 2;
             // 
             // groupBox6
             // 
@@ -974,273 +1254,9 @@
             this.cbXbmcPlayingShowProgress.Text = "Show progress";
             this.cbXbmcPlayingShowProgress.UseVisualStyleBackColor = true;
             // 
-            // groupBox16
-            // 
-            this.groupBox16.Controls.Add(this.cbXbmcControlModeShowWindow);
-            this.groupBox16.Controls.Add(this.cbXbmcControlModeRemoveBrackets);
-            this.groupBox16.Controls.Add(this.cbXbmcControlModeDisableDuringPlayback);
-            this.groupBox16.Controls.Add(this.cbXbmcControlModeEnable);
-            this.groupBox16.Location = new System.Drawing.Point(10, 189);
-            this.groupBox16.Name = "groupBox16";
-            this.groupBox16.Size = new System.Drawing.Size(375, 92);
-            this.groupBox16.TabIndex = 19;
-            this.groupBox16.TabStop = false;
-            this.groupBox16.Text = "Control mode (highly experimental)";
-            // 
-            // cbXbmcControlModeShowWindow
-            // 
-            this.cbXbmcControlModeShowWindow.AutoSize = true;
-            this.cbXbmcControlModeShowWindow.Enabled = false;
-            this.cbXbmcControlModeShowWindow.Location = new System.Drawing.Point(192, 66);
-            this.cbXbmcControlModeShowWindow.Name = "cbXbmcControlModeShowWindow";
-            this.cbXbmcControlModeShowWindow.Size = new System.Drawing.Size(121, 17);
-            this.cbXbmcControlModeShowWindow.TabIndex = 13;
-            this.cbXbmcControlModeShowWindow.Text = "Show window name";
-            this.cbXbmcControlModeShowWindow.UseVisualStyleBackColor = true;
-            // 
-            // cbXbmcControlModeRemoveBrackets
-            // 
-            this.cbXbmcControlModeRemoveBrackets.AutoSize = true;
-            this.cbXbmcControlModeRemoveBrackets.Enabled = false;
-            this.cbXbmcControlModeRemoveBrackets.Location = new System.Drawing.Point(36, 66);
-            this.cbXbmcControlModeRemoveBrackets.Name = "cbXbmcControlModeRemoveBrackets";
-            this.cbXbmcControlModeRemoveBrackets.Size = new System.Drawing.Size(122, 17);
-            this.cbXbmcControlModeRemoveBrackets.TabIndex = 14;
-            this.cbXbmcControlModeRemoveBrackets.Text = "Remove brackets [ ]";
-            this.cbXbmcControlModeRemoveBrackets.UseVisualStyleBackColor = true;
-            // 
-            // cbXbmcControlModeDisableDuringPlayback
-            // 
-            this.cbXbmcControlModeDisableDuringPlayback.AutoSize = true;
-            this.cbXbmcControlModeDisableDuringPlayback.Enabled = false;
-            this.cbXbmcControlModeDisableDuringPlayback.Location = new System.Drawing.Point(36, 43);
-            this.cbXbmcControlModeDisableDuringPlayback.Name = "cbXbmcControlModeDisableDuringPlayback";
-            this.cbXbmcControlModeDisableDuringPlayback.Size = new System.Drawing.Size(139, 17);
-            this.cbXbmcControlModeDisableDuringPlayback.TabIndex = 1;
-            this.cbXbmcControlModeDisableDuringPlayback.Text = "Disable during playback";
-            this.cbXbmcControlModeDisableDuringPlayback.UseVisualStyleBackColor = true;
-            // 
-            // cbXbmcControlModeEnable
-            // 
-            this.cbXbmcControlModeEnable.AutoSize = true;
-            this.cbXbmcControlModeEnable.Location = new System.Drawing.Point(8, 20);
-            this.cbXbmcControlModeEnable.Name = "cbXbmcControlModeEnable";
-            this.cbXbmcControlModeEnable.Size = new System.Drawing.Size(59, 17);
-            this.cbXbmcControlModeEnable.TabIndex = 0;
-            this.cbXbmcControlModeEnable.Text = "Enable";
-            this.cbXbmcControlModeEnable.UseVisualStyleBackColor = true;
-            this.cbXbmcControlModeEnable.CheckedChanged += new System.EventHandler(this.cbXbmcControlModeEnable_CheckedChanged);
-            // 
-            // groupBox10
-            // 
-            this.groupBox10.Controls.Add(this.rbXbmcMusicStayIdle);
-            this.groupBox10.Controls.Add(this.tbXbmcMusicSingleText);
-            this.groupBox10.Controls.Add(this.rbXbmcMusicSingleText);
-            this.groupBox10.Location = new System.Drawing.Point(10, 751);
-            this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Size = new System.Drawing.Size(375, 90);
-            this.groupBox10.TabIndex = 16;
-            this.groupBox10.TabStop = false;
-            this.groupBox10.Text = "Playing a song";
-            // 
-            // rbXbmcMusicStayIdle
-            // 
-            this.rbXbmcMusicStayIdle.AutoSize = true;
-            this.rbXbmcMusicStayIdle.Location = new System.Drawing.Point(6, 66);
-            this.rbXbmcMusicStayIdle.Name = "rbXbmcMusicStayIdle";
-            this.rbXbmcMusicStayIdle.Size = new System.Drawing.Size(66, 17);
-            this.rbXbmcMusicStayIdle.TabIndex = 10;
-            this.rbXbmcMusicStayIdle.TabStop = true;
-            this.rbXbmcMusicStayIdle.Text = "Stay Idle";
-            this.rbXbmcMusicStayIdle.UseVisualStyleBackColor = true;
-            // 
-            // rbXbmcMusicSingleText
-            // 
-            this.rbXbmcMusicSingleText.AutoSize = true;
-            this.rbXbmcMusicSingleText.Location = new System.Drawing.Point(6, 19);
-            this.rbXbmcMusicSingleText.Name = "rbXbmcMusicSingleText";
-            this.rbXbmcMusicSingleText.Size = new System.Drawing.Size(102, 17);
-            this.rbXbmcMusicSingleText.TabIndex = 6;
-            this.rbXbmcMusicSingleText.TabStop = true;
-            this.rbXbmcMusicSingleText.Text = "Show single text";
-            this.rbXbmcMusicSingleText.UseVisualStyleBackColor = true;
-            this.rbXbmcMusicSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMusicSingleText_CheckedChanged);
-            // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.rbXbmcMusicVideoStayIdle);
-            this.groupBox11.Controls.Add(this.tbXbmcMusicVideoSingleText);
-            this.groupBox11.Controls.Add(this.rbXbmcMusicVideoSingleText);
-            this.groupBox11.Location = new System.Drawing.Point(10, 847);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(375, 90);
-            this.groupBox11.TabIndex = 17;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Playing a music video";
-            // 
-            // rbXbmcMusicVideoStayIdle
-            // 
-            this.rbXbmcMusicVideoStayIdle.AutoSize = true;
-            this.rbXbmcMusicVideoStayIdle.Location = new System.Drawing.Point(6, 66);
-            this.rbXbmcMusicVideoStayIdle.Name = "rbXbmcMusicVideoStayIdle";
-            this.rbXbmcMusicVideoStayIdle.Size = new System.Drawing.Size(66, 17);
-            this.rbXbmcMusicVideoStayIdle.TabIndex = 10;
-            this.rbXbmcMusicVideoStayIdle.TabStop = true;
-            this.rbXbmcMusicVideoStayIdle.Text = "Stay Idle";
-            this.rbXbmcMusicVideoStayIdle.UseVisualStyleBackColor = true;
-            // 
-            // rbXbmcMusicVideoSingleText
-            // 
-            this.rbXbmcMusicVideoSingleText.AutoSize = true;
-            this.rbXbmcMusicVideoSingleText.Location = new System.Drawing.Point(6, 19);
-            this.rbXbmcMusicVideoSingleText.Name = "rbXbmcMusicVideoSingleText";
-            this.rbXbmcMusicVideoSingleText.Size = new System.Drawing.Size(102, 17);
-            this.rbXbmcMusicVideoSingleText.TabIndex = 6;
-            this.rbXbmcMusicVideoSingleText.TabStop = true;
-            this.rbXbmcMusicVideoSingleText.Text = "Show single text";
-            this.rbXbmcMusicVideoSingleText.UseVisualStyleBackColor = true;
-            this.rbXbmcMusicVideoSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMusicVideoSingleText_CheckedChanged);
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Controls.Add(this.rbXbmcTvStayIdle);
-            this.groupBox9.Controls.Add(this.tbXbmcTvSingleText);
-            this.groupBox9.Controls.Add(this.rbXbmcTvSingleText);
-            this.groupBox9.Controls.Add(this.cbXbmcTvShowTvHdtvIcon);
-            this.groupBox9.Controls.Add(this.cbXbmcTvMediaTypeIcon);
-            this.groupBox9.Location = new System.Drawing.Point(10, 631);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(375, 114);
-            this.groupBox9.TabIndex = 15;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Playing a tv episode";
-            // 
-            // rbXbmcTvStayIdle
-            // 
-            this.rbXbmcTvStayIdle.AutoSize = true;
-            this.rbXbmcTvStayIdle.Location = new System.Drawing.Point(6, 90);
-            this.rbXbmcTvStayIdle.Name = "rbXbmcTvStayIdle";
-            this.rbXbmcTvStayIdle.Size = new System.Drawing.Size(66, 17);
-            this.rbXbmcTvStayIdle.TabIndex = 10;
-            this.rbXbmcTvStayIdle.TabStop = true;
-            this.rbXbmcTvStayIdle.Text = "Stay Idle";
-            this.rbXbmcTvStayIdle.UseVisualStyleBackColor = true;
-            // 
-            // rbXbmcTvSingleText
-            // 
-            this.rbXbmcTvSingleText.AutoSize = true;
-            this.rbXbmcTvSingleText.Location = new System.Drawing.Point(6, 43);
-            this.rbXbmcTvSingleText.Name = "rbXbmcTvSingleText";
-            this.rbXbmcTvSingleText.Size = new System.Drawing.Size(102, 17);
-            this.rbXbmcTvSingleText.TabIndex = 6;
-            this.rbXbmcTvSingleText.TabStop = true;
-            this.rbXbmcTvSingleText.Text = "Show single text";
-            this.rbXbmcTvSingleText.UseVisualStyleBackColor = true;
-            this.rbXbmcTvSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcTvSingleText_CheckedChanged);
-            // 
-            // cbXbmcTvShowTvHdtvIcon
-            // 
-            this.cbXbmcTvShowTvHdtvIcon.AutoSize = true;
-            this.cbXbmcTvShowTvHdtvIcon.Location = new System.Drawing.Point(191, 20);
-            this.cbXbmcTvShowTvHdtvIcon.Name = "cbXbmcTvShowTvHdtvIcon";
-            this.cbXbmcTvShowTvHdtvIcon.Size = new System.Drawing.Size(134, 17);
-            this.cbXbmcTvShowTvHdtvIcon.TabIndex = 1;
-            this.cbXbmcTvShowTvHdtvIcon.Text = "Show TV / HDTV icon";
-            this.cbXbmcTvShowTvHdtvIcon.UseVisualStyleBackColor = true;
-            // 
-            // cbXbmcTvMediaTypeIcon
-            // 
-            this.cbXbmcTvMediaTypeIcon.AutoSize = true;
-            this.cbXbmcTvMediaTypeIcon.Location = new System.Drawing.Point(7, 20);
-            this.cbXbmcTvMediaTypeIcon.Name = "cbXbmcTvMediaTypeIcon";
-            this.cbXbmcTvMediaTypeIcon.Size = new System.Drawing.Size(147, 17);
-            this.cbXbmcTvMediaTypeIcon.TabIndex = 0;
-            this.cbXbmcTvMediaTypeIcon.Text = "Show TV media type icon";
-            this.cbXbmcTvMediaTypeIcon.UseVisualStyleBackColor = true;
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.cbXbmcIdleShowSeconds);
-            this.groupBox5.Controls.Add(this.rbXbmcIdleTime);
-            this.groupBox5.Controls.Add(this.rbXbmcIdleStaticTextEnable);
-            this.groupBox5.Controls.Add(this.tbXbmcIdleStaticText);
-            this.groupBox5.Location = new System.Drawing.Point(10, 112);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(375, 71);
-            this.groupBox5.TabIndex = 11;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Idle";
-            // 
-            // rbXbmcIdleTime
-            // 
-            this.rbXbmcIdleTime.AutoSize = true;
-            this.rbXbmcIdleTime.Location = new System.Drawing.Point(192, 19);
-            this.rbXbmcIdleTime.Name = "rbXbmcIdleTime";
-            this.rbXbmcIdleTime.Size = new System.Drawing.Size(110, 17);
-            this.rbXbmcIdleTime.TabIndex = 3;
-            this.rbXbmcIdleTime.TabStop = true;
-            this.rbXbmcIdleTime.Text = "Show current time";
-            this.rbXbmcIdleTime.UseVisualStyleBackColor = true;
-            this.rbXbmcIdleTime.CheckedChanged += new System.EventHandler(this.rbXbmcIdleTime_CheckedChanged);
-            // 
-            // rbXbmcIdleStaticTextEnable
-            // 
-            this.rbXbmcIdleStaticTextEnable.AutoSize = true;
-            this.rbXbmcIdleStaticTextEnable.Location = new System.Drawing.Point(7, 19);
-            this.rbXbmcIdleStaticTextEnable.Name = "rbXbmcIdleStaticTextEnable";
-            this.rbXbmcIdleStaticTextEnable.Size = new System.Drawing.Size(100, 17);
-            this.rbXbmcIdleStaticTextEnable.TabIndex = 1;
-            this.rbXbmcIdleStaticTextEnable.TabStop = true;
-            this.rbXbmcIdleStaticTextEnable.Text = "Show static text";
-            this.rbXbmcIdleStaticTextEnable.UseVisualStyleBackColor = true;
-            this.rbXbmcIdleStaticTextEnable.CheckedChanged += new System.EventHandler(this.rbXbmcIdleStaticTextEnable_CheckedChanged);
-            // 
-            // tbXbmcIdleStaticText
-            // 
-            this.tbXbmcIdleStaticText.Enabled = false;
-            this.tbXbmcIdleStaticText.Location = new System.Drawing.Point(34, 43);
-            this.tbXbmcIdleStaticText.Name = "tbXbmcIdleStaticText";
-            this.tbXbmcIdleStaticText.Size = new System.Drawing.Size(149, 20);
-            this.tbXbmcIdleStaticText.TabIndex = 2;
-            // 
-            // groupBox8
-            // 
-            this.groupBox8.Controls.Add(this.rbXbmcMovieStayIdle);
-            this.groupBox8.Controls.Add(this.tbXbmcMovieSingleText);
-            this.groupBox8.Controls.Add(this.rbXbmcMovieSingleText);
-            this.groupBox8.Location = new System.Drawing.Point(10, 535);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(375, 90);
-            this.groupBox8.TabIndex = 14;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Playing a movie";
-            // 
-            // rbXbmcMovieStayIdle
-            // 
-            this.rbXbmcMovieStayIdle.AutoSize = true;
-            this.rbXbmcMovieStayIdle.Location = new System.Drawing.Point(6, 66);
-            this.rbXbmcMovieStayIdle.Name = "rbXbmcMovieStayIdle";
-            this.rbXbmcMovieStayIdle.Size = new System.Drawing.Size(66, 17);
-            this.rbXbmcMovieStayIdle.TabIndex = 6;
-            this.rbXbmcMovieStayIdle.TabStop = true;
-            this.rbXbmcMovieStayIdle.Text = "Stay Idle";
-            this.rbXbmcMovieStayIdle.UseVisualStyleBackColor = true;
-            // 
-            // rbXbmcMovieSingleText
-            // 
-            this.rbXbmcMovieSingleText.AutoSize = true;
-            this.rbXbmcMovieSingleText.Location = new System.Drawing.Point(6, 19);
-            this.rbXbmcMovieSingleText.Name = "rbXbmcMovieSingleText";
-            this.rbXbmcMovieSingleText.Size = new System.Drawing.Size(102, 17);
-            this.rbXbmcMovieSingleText.TabIndex = 2;
-            this.rbXbmcMovieSingleText.TabStop = true;
-            this.rbXbmcMovieSingleText.Text = "Show single text";
-            this.rbXbmcMovieSingleText.UseVisualStyleBackColor = true;
-            this.rbXbmcMovieSingleText.CheckedChanged += new System.EventHandler(this.rbXbmcMovieSingleText_CheckedChanged);
-            // 
             // trayIcon
             // 
-            this.trayIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("trayIcon.Icon")));
+            this.trayIcon.Icon = ((System.Drawing.Icon) (resources.GetObject("trayIcon.Icon")));
             this.trayIcon.Text = "XBMC on iMon\r\nDisconnected";
             this.trayIcon.DoubleClick += new System.EventHandler(this.trayIcon_DoubleClick);
             // 
@@ -1296,16 +1312,20 @@
             this.trayMenuClose.Text = "Close";
             this.trayMenuClose.Click += new System.EventHandler(this.trayMenuClose_Click);
             // 
-            // cbXbmcIdleShowSeconds
+            // tbXbmcAnnouncementPort
             // 
-            this.cbXbmcIdleShowSeconds.AutoSize = true;
-            this.cbXbmcIdleShowSeconds.Enabled = false;
-            this.cbXbmcIdleShowSeconds.Location = new System.Drawing.Point(219, 45);
-            this.cbXbmcIdleShowSeconds.Name = "cbXbmcIdleShowSeconds";
-            this.cbXbmcIdleShowSeconds.Size = new System.Drawing.Size(96, 17);
-            this.cbXbmcIdleShowSeconds.TabIndex = 4;
-            this.cbXbmcIdleShowSeconds.Text = "Show seconds";
-            this.cbXbmcIdleShowSeconds.UseVisualStyleBackColor = true;
+            this.tbXbmcAnnouncementPort.Location = new System.Drawing.Point(140, 100);
+            this.tbXbmcAnnouncementPort.Name = "tbXbmcAnnouncementPort";
+            this.tbXbmcAnnouncementPort.Size = new System.Drawing.Size(73, 20);
+            this.tbXbmcAnnouncementPort.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(6, 102);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Announcement port:";
             // 
             // bNavigationXbmc
             // 
@@ -1361,6 +1381,17 @@
             this.bNavigationGeneral.UseVisualStyleBackColor = false;
             this.bNavigationGeneral.Click += new System.EventHandler(this.bNavigationGeneral_Click);
             // 
+            // tbXbmcMovieSingleText
+            // 
+            this.tbXbmcMovieSingleText.Delimiter = "%";
+            this.tbXbmcMovieSingleText.Enabled = false;
+            this.tbXbmcMovieSingleText.Location = new System.Drawing.Point(33, 40);
+            this.tbXbmcMovieSingleText.MaximumRows = 2;
+            this.tbXbmcMovieSingleText.Name = "tbXbmcMovieSingleText";
+            this.tbXbmcMovieSingleText.Size = new System.Drawing.Size(336, 20);
+            this.tbXbmcMovieSingleText.StartAndEnd = true;
+            this.tbXbmcMovieSingleText.TabIndex = 5;
+            // 
             // tbXbmcTvSingleText
             // 
             this.tbXbmcTvSingleText.Delimiter = "%";
@@ -1383,17 +1414,6 @@
             this.tbXbmcMusicVideoSingleText.StartAndEnd = true;
             this.tbXbmcMusicVideoSingleText.TabIndex = 9;
             // 
-            // tbXbmcMovieSingleText
-            // 
-            this.tbXbmcMovieSingleText.Delimiter = "%";
-            this.tbXbmcMovieSingleText.Enabled = false;
-            this.tbXbmcMovieSingleText.Location = new System.Drawing.Point(33, 40);
-            this.tbXbmcMovieSingleText.MaximumRows = 2;
-            this.tbXbmcMovieSingleText.Name = "tbXbmcMovieSingleText";
-            this.tbXbmcMovieSingleText.Size = new System.Drawing.Size(336, 20);
-            this.tbXbmcMovieSingleText.StartAndEnd = true;
-            this.tbXbmcMovieSingleText.TabIndex = 5;
-            // 
             // tbXbmcMusicSingleText
             // 
             this.tbXbmcMusicSingleText.Delimiter = "%";
@@ -1412,7 +1432,7 @@
             this.ClientSize = new System.Drawing.Size(487, 453);
             this.Controls.Add(this.splitter);
             this.Controls.Add(this.menu);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Icon = ((System.Drawing.Icon) (resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
             this.MaximizeBox = false;
             this.Name = "XBMC";
@@ -1424,6 +1444,7 @@
             this.menu.PerformLayout();
             this.splitter.Panel1.ResumeLayout(false);
             this.splitter.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize) (this.splitter)).EndInit();
             this.splitter.ResumeLayout(false);
             this.pNavigation.ResumeLayout(false);
             this.tabOptions.ResumeLayout(false);
@@ -1432,7 +1453,7 @@
             this.groupBox14.PerformLayout();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudImonLcdScrollingDelay)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudImonLcdScrollingDelay)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.tpGeneral.ResumeLayout(false);
@@ -1445,24 +1466,24 @@
             this.tpXBMC.ResumeLayout(false);
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXbmcIconsUpdateInterval)).EndInit();
+            ((System.ComponentModel.ISupportInitialize) (this.nudXbmcIconsUpdateInterval)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudXbmcConnectionInterval)).EndInit();
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
-            this.groupBox16.ResumeLayout(false);
-            this.groupBox16.PerformLayout();
-            this.groupBox10.ResumeLayout(false);
-            this.groupBox10.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize) (this.nudXbmcConnectionInterval)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
+            this.groupBox16.ResumeLayout(false);
+            this.groupBox16.PerformLayout();
+            this.groupBox9.ResumeLayout(false);
+            this.groupBox9.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.trayMenu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1582,6 +1603,8 @@
         private System.Windows.Forms.RadioButton rbXbmcTvStayIdle;
         private System.Windows.Forms.RadioButton rbXbmcMovieStayIdle;
         private System.Windows.Forms.CheckBox cbXbmcIdleShowSeconds;
+        private System.Windows.Forms.TextBox tbXbmcAnnouncementPort;
+        private System.Windows.Forms.Label label9;
 
 
     }

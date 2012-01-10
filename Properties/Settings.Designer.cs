@@ -587,5 +587,17 @@ namespace iMon.XBMC.Properties {
                 this["XbmcIdleTimeShowSeconds"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("9090")]
+        public int XbmcAnnouncementPort {
+            get {
+                return ((int)(this["XbmcAnnouncementPort"]));
+            }
+            set {
+                this["XbmcAnnouncementPort"] = value;
+            }
+        }
     }
 }
