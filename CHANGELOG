@@ -1,10 +1,17 @@
-﻿CHANGELOG for "XBMC on iMON Display"
+CHANGELOG for "XBMC on iMON Display"
 ====================================
 
 [+]: new feature
 [-]: removed
 [x]: fixed
 [p]: patched
+
+v0.1.9.0 Beta: January 10, 2012
+-------------------------------
+ - General:
+   [p] Compatibility with XBMC Eden (not compatible with XBMC Dharma now!)
+ - XBMC:
+   [+] Option to change the TCP port
 
 v0.1.4.0 Beta: January 04, 2011
 -------------------------------
@@ -36,7 +43,7 @@ v0.1.3.0 Beta: November 10, 2010
    [x] Progress bar was reset when the user seeked through the currently playing file
    [x] Program crashed when the seek time was negative
    [+] Option to customize the text shown when a movie is currently playing
-   [+] Option to enalbe/disable the usage of the "TV" media type icon instead of the "Movie" one when playing a tv episode
+   [+] Option to enable/disable the usage of the "TV" media type icon instead of the "Movie" one when playing a tv episode
    [+] Option to enable/disable the usage of the "TV" and "HDTV" icon when playing a tv episode
    [+] Option to customize the text shown when a tv episode is currently playing
    [+] Option to customize the text shown when a music video is currently playing

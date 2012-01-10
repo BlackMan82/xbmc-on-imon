@@ -25,15 +25,11 @@ please report this so we can help investigate the problem.
 2. Software Requirements
 ========================
  - Windows XP or newer
- - Microsoft .NET Framework 2.0: 
-   x86: http://www.microsoft.com/downloads/details.aspx?FamilyID=0856eacb-4362-4b0d-8edd-aab15c5e04f5
-   x64: http://www.microsoft.com/downloads/details.aspx?familyid=B44A0000-ACF8-4FA1-AFFB-40E78D788B00
- - iMON Manager v7.91.0929: You need to install iMON Manager v7.89.0622 or higher
-   (http://download.soundgraph.com/file/setup/iMON_7_90_0702_01.zip), 
-   download the update for iMon Manager v7.91.0929 
-   (http://download.soundgraph.com/path/patch/Beta/iMON_Patch_7_91_0929_Beta.zip)
-   and execute the provided EXE file which updates your iMON Manager.
- - XBMC Dharma Beta 1 or newer: http://mirrors.xbmc.org/releases/win32/
+ - Microsoft .NET Framework 4.0: 
+   http://www.microsoft.com/download/en/details.aspx?id=17718
+ - iMON Manager v8.04.0629: You need to install iMON Manager v8.04.0629 or higher
+   (http://download.soundgraph.com/path/setup/iMON_8_04_0629.zip), 
+ - XBMC Eden Beta 1 or newer: http://mirrors.xbmc.org/releases/win32/
 
 
 3.Installation
@@ -50,8 +46,9 @@ General
 -------
 Make sure no other running software on your computer is using TCP port 9090.
 You can do that by using NMap (http://nmap.org/) to scan the port and see if
-it is currently used. Unfortunately this port is currently hardcoded within
-XBMC and therefore can't be changed.
+it is currently used. Although this is the default TCP port used by XBMC, it can
+be changed using "advancedSettings.xml". You can also change this port in 
+"XBMC on iMON Display". Make sure you have set these port equally.
 
 iMON Manager
 ------------
@@ -93,7 +90,8 @@ Here is a list of a few known issues. Please DO NOT report these as bugs!
 7. Support
 ==========
 If you encounter any bug or have a problem using "XBMC on iMON Display" please visit
-the project management site at https://sourceforge.net/apps/trac/xbmc-on-imon/.
+the project management site at http://github.com/BlackMan82/xbmc-on-imon
+(originally at https://sourceforge.net/apps/trac/xbmc-on-imon/).
 
 8. Disclaimer
 =============
