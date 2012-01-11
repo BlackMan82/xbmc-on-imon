@@ -79,6 +79,8 @@
             this.cbXbmcIconsScreen = new System.Windows.Forms.CheckBox();
             this.cbXbmcIconsVolEnable = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbXbmcTcpPort = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.nudXbmcConnectionInterval = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
@@ -134,8 +136,6 @@
             this.trayMenuImon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.trayMenuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.tbXbmcAnnouncementPort = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
             this.bNavigationXbmc = new iMon.XBMC.NavigationButton();
             this.bNavigationImon = new iMon.XBMC.NavigationButton();
             this.bNavigationGeneral = new iMon.XBMC.NavigationButton();
@@ -715,7 +715,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.tbXbmcAnnouncementPort);
+            this.groupBox1.Controls.Add(this.tbXbmcTcpPort);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.nudXbmcConnectionInterval);
@@ -734,6 +734,21 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connection";
+            // 
+            // tbXbmcTcpPort
+            // 
+            this.tbXbmcTcpPort.Location = new System.Drawing.Point(94, 99);
+            this.tbXbmcTcpPort.Name = "tbXbmcTcpPort";
+            this.tbXbmcTcpPort.Size = new System.Drawing.Size(73, 20);
+            this.tbXbmcTcpPort.TabIndex = 12;
+            // 
+            // label9
+            // 
+            this.label9.Location = new System.Drawing.Point(6, 102);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(128, 13);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "TCP port:";
             // 
             // label6
             // 
@@ -1312,21 +1327,6 @@
             this.trayMenuClose.Text = "Close";
             this.trayMenuClose.Click += new System.EventHandler(this.trayMenuClose_Click);
             // 
-            // tbXbmcAnnouncementPort
-            // 
-            this.tbXbmcAnnouncementPort.Location = new System.Drawing.Point(140, 100);
-            this.tbXbmcAnnouncementPort.Name = "tbXbmcAnnouncementPort";
-            this.tbXbmcAnnouncementPort.Size = new System.Drawing.Size(73, 20);
-            this.tbXbmcAnnouncementPort.TabIndex = 12;
-            // 
-            // label9
-            // 
-            this.label9.Location = new System.Drawing.Point(6, 102);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(128, 13);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Announcement port:";
-            // 
             // bNavigationXbmc
             // 
             this.bNavigationXbmc.ActiveImageIndex = 7;
@@ -1603,7 +1603,7 @@
         private System.Windows.Forms.RadioButton rbXbmcTvStayIdle;
         private System.Windows.Forms.RadioButton rbXbmcMovieStayIdle;
         private System.Windows.Forms.CheckBox cbXbmcIdleShowSeconds;
-        private System.Windows.Forms.TextBox tbXbmcAnnouncementPort;
+        private System.Windows.Forms.TextBox tbXbmcTcpPort;
         private System.Windows.Forms.Label label9;
 
 

@@ -591,12 +591,12 @@ namespace iMon.XBMC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("9090")]
-        public int XbmcAnnouncementPort {
+        public int XbmcTcpPort {
             get {
-                return ((int)(this["XbmcAnnouncementPort"]));
+                return ((int)(this["XbmcTcpPort"]));
             }
             set {
-                this["XbmcAnnouncementPort"] = value;
+                this["XbmcTcpPort"] = value;
             }
         }
     }
