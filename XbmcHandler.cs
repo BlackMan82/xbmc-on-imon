@@ -29,6 +29,7 @@ namespace iMon.XBMC
 
         #region Private variables
 
+        // TODO: Implement ProgressUpdateInterval as an option within settings
         private const int ProgressUpdateInterval = 5000;
         private const int SystemTimeUpdateInterval = 1000;
         private const int DefaultTextDelay = 2000;
@@ -171,7 +172,7 @@ namespace iMon.XBMC
                 // Wait until a connection has been established
                 this.semReady.WaitOne();
 
-                Logging.Log("XBMC Handler", "Start working");
+                Logging.Log(LoggingArea, "Start working");
 
                 if (Settings.Default.XbmcControlModeEnable)
                 {
@@ -185,10 +186,10 @@ namespace iMon.XBMC
                     this.Update();
                 }
 
-                Logging.Log("XBMC Handler", "Stop working");
+                Logging.Log(LoggingArea, "Stop working");
             }
 
-            Logging.Log("XBMC Handler", "Cancelled");
+            Logging.Log(LoggingArea, "Cancelled");
 
             this.xbmc.Player.PlaybackStarted -= this.xbmcPlaybackStarted;
             this.xbmc.Player.PlaybackPaused -= this.xbmcPlaybackPaused;
@@ -283,6 +284,7 @@ namespace iMon.XBMC
             this.playerState = PlayerState.Playing;
 
             this.getTime(out this.position, out this.length);
+            Logging.Log(LoggingArea, "Position " + this.position.TotalSeconds + " of " + this.length.TotalSeconds + " [s]");
             this.progressTimer.Start();
 
             this.update();
@@ -401,6 +403,7 @@ namespace iMon.XBMC
         private void progressTimerUpdate(object sender, ElapsedEventArgs e) 
         {
             this.position += TimeSpan.FromMilliseconds(ProgressUpdateInterval);
+            Logging.Log(LoggingArea, "Position updated to " + this.position.TotalSeconds + " of " + this.length.TotalSeconds + " [s]");
             this.updateProgress();
         }
 
@@ -655,6 +658,7 @@ namespace iMon.XBMC
                 this.display.SetProgress(0, 0);
             }*/
 
+            Logging.Log(LoggingArea, "Display handler: " + this.display.ToString());
             this.display.SetProgress(this.position, this.length);
         }
 

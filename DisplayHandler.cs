@@ -29,6 +29,10 @@ namespace iMon.XBMC
 
         private System.Timers.Timer discRotation;
 
+        private const string LoggingArea = "Display Handler";
+        private const bool LogDisplayingIcons = false;
+        private const bool LogDisplayingDiscIcons = false;
+
         #endregion
 
         #region Public variables
@@ -77,7 +81,7 @@ namespace iMon.XBMC
                 // Wait until a connection has been established
                 this.semReady.WaitOne();
 
-                Logging.Log("Display Handler", "Start working");
+                Logging.Log(LoggingArea, "Start working");
 
                 if (this.lcd)
                 {
@@ -117,10 +121,10 @@ namespace iMon.XBMC
                     }
                 }
 
-                Logging.Log("Display Handler", "Stop working");
+                Logging.Log(LoggingArea, "Stop working");
             }
 
-            Logging.Log("Display Handler", "Cancelled");
+            Logging.Log(LoggingArea, "Cancelled");
 
             this.imon.LCD.ScrollFinished -= lcdScrollFinished;
         }
@@ -148,7 +152,7 @@ namespace iMon.XBMC
         {
             lock (this.queueLock)
             {
-                Logging.Log("Display Handler", "Setting text to \"" + lcd + "\"");
+                Logging.Log(LoggingArea, "Setting text to \"" + lcd + "\"");
 
                 this.queue.Clear();
                 this.queue.Add(new Text(lcd, vfdUpper, vfdLower, delay));
@@ -177,7 +181,7 @@ namespace iMon.XBMC
         {
             lock (this.queueLock)
             {
-                Logging.Log("Display Handler", "Adding text \"" + lcd + "\" to the queue");
+                Logging.Log(LoggingArea, "Adding text \"" + lcd + "\" to the queue");
 
                 this.queue.Add(new Text(lcd, vfdUpper, vfdLower, delay));
 
@@ -190,27 +194,33 @@ namespace iMon.XBMC
 
         public void SetProgress(int position, int total)
         {
+            Logging.Log(LoggingArea, "Trying to set the progress bar to " + position.ToString() + "/" + total.ToString());
+
             if (this.lcd)
             {
+                Logging.Log(LoggingArea, "Setting the progress bar to " + position.ToString() + "/" + total.ToString());
+
                 this.imon.LCD.SetProgress(position, total);
             }
         }
 
         public void SetProgress(TimeSpan position, TimeSpan total)
         {
-            if (this.lcd)
-            {
-                this.imon.LCD.SetProgress(Convert.ToInt32(position.TotalMilliseconds), Convert.ToInt32(total.TotalMilliseconds));
-            }
+            //this.imon.LCD.SetProgress(Convert.ToInt32(position.TotalMilliseconds), Convert.ToInt32(total.TotalMilliseconds));
+            this.SetProgress(Convert.ToInt32(position.TotalSeconds), Convert.ToInt32(total.TotalSeconds));
         }
 
         public void SetIcon(iMonLcdIcons icon, bool show)
         {
+            if (LogDisplayingIcons)
+                Logging.Log(LoggingArea, "Trying to set LCD icon " + icon + " to " + show);
+
             this.icons[icon] = show;
 
             if (this.lcd)
             {
-                Logging.Log("Display Handler", "Setting LCD icon " + icon + " to " + show); 
+                if (LogDisplayingIcons)
+                    Logging.Log(LoggingArea, "Setting LCD icon " + icon + " to " + show); 
                 
                 this.imon.LCD.Icons.Set(icon, show);
             }
@@ -220,9 +230,13 @@ namespace iMon.XBMC
         {
             foreach (iMonLcdIcons icon in iconList)
             {
+                if (LogDisplayingIcons)
+                    Logging.Log(LoggingArea, "Trying to set LCD icon " + icon + " to " + show);
+
                 if (this.lcd) 
                 {
-                    Logging.Log("Display Handler", "Setting LCD icon " + icon + " to " + show);
+                    if (LogDisplayingIcons)
+                        Logging.Log(LoggingArea, "Setting LCD icon " + icon + " to " + show);
                 }
 
                 this.icons[icon] = show;
@@ -236,6 +250,9 @@ namespace iMon.XBMC
 
         public void HideAllIcons()
         {
+            if (LogDisplayingIcons)
+                Logging.Log(LoggingArea, "Trying to hide all LCD icons");
+
             foreach (iMonLcdIcons icon in Enum.GetValues(typeof(iMonLcdIcons)))
             {
                 this.icons[icon] = false;
@@ -243,7 +260,8 @@ namespace iMon.XBMC
 
             if (this.lcd)
             {
-                Logging.Log("Display Handler", "Hiding all LCD icons");
+                if (LogDisplayingIcons)
+                    Logging.Log(LoggingArea, "Hiding all LCD icons");
 
                 this.imon.LCD.Icons.HideAll();
             }
@@ -346,7 +364,7 @@ namespace iMon.XBMC
         {
             Thread.Sleep(Settings.Default.ImonLcdScrollingDelay);
 
-            Logging.Log("Display Handler", "Scrolling finished");
+            Logging.Log(LoggingArea, "Scrolling finished");
 
             lock (this.queueLock)
             {
@@ -397,20 +415,20 @@ namespace iMon.XBMC
             {
                 if (this.lcd)
                 {
-                    Logging.Log("Display Handler", "LCD.SetText: " + text.Lcd);
+                    Logging.Log(LoggingArea, "LCD.SetText: " + text.Lcd);
 
                     this.imon.LCD.SetText(text.Lcd.Substring(0, text.Lcd.Length < 256 ? text.Lcd.Length : 257));
                 }
                 if (this.vfd)
                 {
-                    Logging.Log("Display Handler", "VFD.SetText: " + text.VfdUpper + "; " + text.VfdLower);
+                    Logging.Log(LoggingArea, "VFD.SetText: " + text.VfdUpper + "; " + text.VfdLower);
                     
                     this.imon.VFD.SetText(text.VfdUpper, text.VfdLower);
                 }
 
                 if (text.Delay > 0)
                 {
-                    Logging.Log("Display Handler", "Showing text for " + text.Delay + "ms");
+                    Logging.Log(LoggingArea, "Showing text for " + text.Delay + "ms");
 
                     Thread.Sleep(text.Delay);
                 }
