@@ -48,7 +48,7 @@ Make sure no other running software on your computer is using TCP port 9090.
 You can do that by using NMap (http://nmap.org/) to scan the port and see if
 it is currently used. Although this is the default TCP port used by XBMC, it can
 be changed using "advancedSettings.xml". You can also change this port in 
-"XBMC on iMON Display". Make sure you have set these port equally.
+"XBMC on iMON Display". Make sure you have set these ports equally.
 
 iMON Manager
 ------------

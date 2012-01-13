@@ -153,25 +153,14 @@
             <returns>This function will return one of DisplayResult enumeration value.
             DisplayResult.Succeeded will be returned if succeeded. DisplayResult.NotInitialized or DisplayResult.Failed can be returned if failed.</returns>
         </member>
-        <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayType">
+        <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayEqualizerData">
             <summary>
-            These enumeration values represent display type.
-            Currently iMON Display API supports VFD and LCD products.
+            This structure contains Equalizer data for 16 bands.
             </summary>
         </member>
-        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.None">
+        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayEqualizerData.BandData">
             <summary>
-            Unknown product
-            </summary>
-        </member>
-        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.VFD">
-            <summary>
-            VFD product
-            </summary>
-        </member>
-        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.LCD">
-            <summary>
-            LCD product
+            Represents Equalizer data for 16 bands. Its range is from 0 to 100.
             </summary>
         </member>
         <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayResult">
@@ -282,14 +271,20 @@
             LPARAM is not used.
             </summary>
         </member>
-        <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayEqualizerData">
+        <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayType">
             <summary>
-            This structure contains Equalizer data for 16 bands.
+            These enumeration values represent display type.
+            Currently iMON Display API supports VFD and LCD products.
             </summary>
         </member>
-        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayEqualizerData.BandData">
+        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.VFD">
             <summary>
-            Represents Equalizer data for 16 bands. Its range is from 0 to 100.
+            VFD product
+            </summary>
+        </member>
+        <member name="F:iMon.DisplayApi.iMonNativeApi.iMonDisplayType.LCD">
+            <summary>
+            LCD product
             </summary>
         </member>
         <member name="T:iMon.DisplayApi.iMonNativeApi.iMonDisplayInitResult">
