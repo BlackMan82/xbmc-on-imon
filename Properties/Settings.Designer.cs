@@ -599,5 +599,65 @@ namespace iMon.XBMC.Properties {
                 this["XbmcTcpPort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PAUSE")]
+        public string XbmcOnPauseText {
+            get {
+                return ((string)(this["XbmcOnPauseText"]));
+            }
+            set {
+                this["XbmcOnPauseText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("PLAY")]
+        public string XbmcOnPlayText {
+            get {
+                return ((string)(this["XbmcOnPlayText"]));
+            }
+            set {
+                this["XbmcOnPlayText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("STOP")]
+        public string XbmcOnStopText {
+            get {
+                return ((string)(this["XbmcOnStopText"]));
+            }
+            set {
+                this["XbmcOnStopText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("END")]
+        public string XbmcOnEndText {
+            get {
+                return ((string)(this["XbmcOnEndText"]));
+            }
+            set {
+                this["XbmcOnEndText"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
+        public int XbmcOnEventTextDelayMS {
+            get {
+                return ((int)(this["XbmcOnEventTextDelayMS"]));
+            }
+            set {
+                this["XbmcOnEventTextDelayMS"] = value;
+            }
+        }
     }
 }

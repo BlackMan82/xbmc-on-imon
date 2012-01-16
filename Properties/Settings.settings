@@ -146,5 +146,20 @@
     <Setting Name="XbmcTcpPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">9090</Value>
     </Setting>
+    <Setting Name="XbmcOnPauseText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PAUSE</Value>
+    </Setting>
+    <Setting Name="XbmcOnPlayText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">PLAY</Value>
+    </Setting>
+    <Setting Name="XbmcOnStopText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">STOP</Value>
+    </Setting>
+    <Setting Name="XbmcOnEndText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">END</Value>
+    </Setting>
+    <Setting Name="XbmcOnEventTextDelayMS" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1000</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

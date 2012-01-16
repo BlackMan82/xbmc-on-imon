@@ -687,6 +687,7 @@ namespace iMon.XBMC
             // TODO: Show SFL this.display.SetIcon(iMonLcdIcons.Shuffle, this.player.Random);
             // TODO: Show REP this.display.SetIcon(iMonLcdIcons.Repeat, this.player.Repeat != XbmcRepeatTypes.Off);
             iMonLcdIcons icon;
+            Logging.Log(LoggingArea, "Current player: " + this.player.ToString());
             if (this.player is XbmcAudioPlayer)
             {
                 if (!Settings.Default.XbmcIdleStaticTextEnable)
@@ -695,9 +696,9 @@ namespace iMon.XBMC
                 }
 
                 icon = iMonLcdIcons.Music;
-                // TODO: Get current playing item information
-//                this.currentlyPlaying = this.xbmc.Playlist.Audio.GetCurrentItem();
-//                this.currentlyPlaying = this.xbmc.Player.Audio.GetCurrentItem();
+                this.currentlyPlaying = this.xbmc.Playlist.Audio.GetCurrentItem();
+
+                //Logging.Log(LoggingArea, "Current audio item: " + this.currentlyPlaying.);
 
                 this.displaySong();
                 this.displayAudioCodecs();
@@ -713,9 +714,8 @@ namespace iMon.XBMC
             else
             {
                 icon = iMonLcdIcons.Movie;
-                // TODO: Get current playing item information
-//                this.currentlyPlaying = this.xbmc.Playlist.Video.GetCurrentItem();
-//                this.currentlyPlaying = this.xbmc.Player.Video.GetCurrentItem();
+                this.currentlyPlaying = this.xbmc.Playlist.Video.GetCurrentItem();
+
                 if (this.currentlyPlaying is XbmcTvEpisode)
                 {
                     if (!Settings.Default.XbmcIdleStaticTextEnable)

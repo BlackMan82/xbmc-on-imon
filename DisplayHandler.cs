@@ -29,6 +29,8 @@ namespace iMon.XBMC
 
         private System.Timers.Timer discRotation;
 
+        private const int DefaultDelay = 0;
+
         private const string LoggingArea = "Display Handler";
         private const bool LogDisplayingIcons = false;
         private const bool LogDisplayingDiscIcons = false;
@@ -145,7 +147,7 @@ namespace iMon.XBMC
 
         public void SetText(string lcd, string vfdUpper, string vfdLower)
         {
-            this.SetText(lcd, vfdUpper, vfdLower, 0);
+            this.SetText(lcd, vfdUpper, vfdLower, DefaultDelay);
         }
 
         public void SetText(string lcd, string vfdUpper, string vfdLower, int delay)
