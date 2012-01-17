@@ -6,6 +6,11 @@ CHANGELOG for "XBMC on iMON Display"
 [x]: fixed
 [p]: patched
 
+v0.1.9.1 Beta: January 17, 2012
+-------------------------------
+ - XBMC
+   [p] Using currently playing item information revived
+
 v0.1.9.0 Beta: January 10, 2012
 -------------------------------
  - General:
