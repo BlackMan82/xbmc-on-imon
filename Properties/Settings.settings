@@ -159,7 +159,10 @@
       <Value Profile="(Default)">END</Value>
     </Setting>
     <Setting Name="XbmcOnEventTextDelayMS" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">1000</Value>
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="XbmcOnConnectedText" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Connected</Value>
     </Setting>
   </Settings>
 </SettingsFile>
