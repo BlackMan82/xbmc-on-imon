@@ -285,17 +285,17 @@ namespace iMon.XBMC
 
             Logging.Log(LoggingArea, "Playback started");
 
+            if (Settings.Default.XbmcOnPlayText.CompareTo("") != 0)
+            {
+                this.display.SetText(Settings.Default.XbmcOnPlayText, Settings.Default.XbmcOnEventTextDelayMS);
+            }
+
             this.player = e.Player;
             this.playerState = PlayerState.Playing;
 
             this.getTime(out this.position, out this.length);
             Logging.Log(LoggingArea, "Position " + this.position.TotalSeconds + " of " + this.length.TotalSeconds + " [s]");
             this.progressTimer.Start();
-
-            if (Settings.Default.XbmcOnPlayText.CompareTo("") != 0)
-            {
-                this.display.SetText(Settings.Default.XbmcOnPlayText, Settings.Default.XbmcOnEventTextDelayMS);
-            }
 
             this.update();
         }
@@ -309,16 +309,16 @@ namespace iMon.XBMC
 
             Logging.Log(LoggingArea, "Playback paused");
 
+            if (Settings.Default.XbmcOnPauseText.CompareTo("") != 0)
+            {
+                this.display.SetText(Settings.Default.XbmcOnPauseText, Settings.Default.XbmcOnPauseText, e.Position.ToString(), Settings.Default.XbmcOnEventTextDelayMS);
+            }
+
             this.playerState = PlayerState.Paused;
 
             this.progressTimer.Stop();
             this.position = e.Position;
             this.updateProgress();
-
-            if (Settings.Default.XbmcOnPauseText.CompareTo("") != 0)
-            {
-                this.display.SetText(Settings.Default.XbmcOnPauseText, Settings.Default.XbmcOnPauseText, e.Position.ToString(), Settings.Default.XbmcOnEventTextDelayMS);
-            }
 
             this.update();
         }
@@ -345,12 +345,12 @@ namespace iMon.XBMC
         {
             Logging.Log(LoggingArea, "Playback stopped");
 
-            this.playbackStopped();
             if (Settings.Default.XbmcOnStopText.CompareTo("") != 0)
             {
                 this.display.SetText(Settings.Default.XbmcOnStopText, Settings.Default.XbmcOnEventTextDelayMS);
             }
-            //this.display.SetText("STOP", "Playback", "stopped", DefaultTextDelay);
+
+            this.playbackStopped();
 
             this.update();
         }
@@ -359,12 +359,12 @@ namespace iMon.XBMC
         {
             Logging.Log(LoggingArea, "Playback ended");
 
-            this.playbackStopped();
             if (Settings.Default.XbmcOnEndText.CompareTo("") != 0)
             {
                 this.display.SetText(Settings.Default.XbmcOnEndText, Settings.Default.XbmcOnEventTextDelayMS);
             }
-            //this.display.SetText("Playback ended", "Playback", "ended", DefaultTextDelay);
+
+            this.playbackStopped();
 
             this.update();
         }
