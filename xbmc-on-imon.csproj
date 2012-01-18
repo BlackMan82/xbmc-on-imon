@@ -135,6 +135,7 @@
     <Compile Include="SuggestionBox.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Updating.cs" />
     <Compile Include="XbmcHandler.cs">
       <SubType>Component</SubType>
     </Compile>

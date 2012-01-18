@@ -671,5 +671,17 @@ namespace iMon.XBMC.Properties {
                 this["XbmcOnConnectedText"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool GeneralCheckForUpdateOnStart {
+            get {
+                return ((bool)(this["GeneralCheckForUpdateOnStart"]));
+            }
+            set {
+                this["GeneralCheckForUpdateOnStart"] = value;
+            }
+        }
     }
 }

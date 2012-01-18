@@ -289,6 +289,11 @@ namespace iMon.XBMC
             this.aboutDialog.ShowDialog();
         }
 
+        private void miAboutCheckForUpdates_Click(object sender, EventArgs e)
+        {
+            Updating.update(false);
+        }
+
         #endregion
 
         #region Event handling
@@ -330,5 +335,6 @@ namespace iMon.XBMC
         }
 
         #endregion
+
     }
 }

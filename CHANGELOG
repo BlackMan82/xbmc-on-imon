@@ -8,6 +8,8 @@ CHANGELOG for "XBMC on iMON Display"
 
 v0.1.9.2 Beta: January 18, 2012
 -------------------------------
+ - General
+   [+] Checking for updates available 
  - XBMC
    [x] Control messages displayed correctly and with 1000ms timeout now (Issue #13)
 

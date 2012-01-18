@@ -110,6 +110,10 @@ namespace iMon.XBMC
             this.settingsUpdate();
             this.setupSettingsChanges(this.tabOptions);
 
+            // Check for update
+            if (Settings.Default.GeneralCheckForUpdateOnStart)
+                Updating.update(true);
+
             // Setting up iMON
             Logging.Log("Setting up iMON");
             this.imon = new iMonWrapperApi();
@@ -219,6 +223,7 @@ namespace iMon.XBMC
             // General settings
             this.cbGeneralStartupAuto.Checked = Settings.Default.GeneralStartupAuto;
             this.cbGeneralStartupConnect.Checked = Settings.Default.GeneralStartupConnect;
+            this.cbGeneralCheckForUpdateOnStart.Checked = Settings.Default.GeneralCheckForUpdateOnStart;
 
             this.cbGeneralTrayEnabled.Checked = Settings.Default.GeneralTrayEnabled;
             this.cbGeneralTrayStartMinimized.Checked = Settings.Default.GeneralTrayStartMinimized;
@@ -379,6 +384,7 @@ namespace iMon.XBMC
             // General settings
             Settings.Default.GeneralStartupAuto = this.cbGeneralStartupAuto.Checked;
             Settings.Default.GeneralStartupConnect = this.cbGeneralStartupConnect.Checked;
+            Settings.Default.GeneralCheckForUpdateOnStart = this.cbGeneralCheckForUpdateOnStart.Checked;
 
             Settings.Default.GeneralTrayEnabled = this.cbGeneralTrayEnabled.Checked;
             Settings.Default.GeneralTrayStartMinimized = this.cbGeneralTrayStartMinimized.Checked;

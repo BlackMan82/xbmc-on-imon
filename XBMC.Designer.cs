@@ -42,10 +42,14 @@
             this.miImonInitialize = new System.Windows.Forms.ToolStripMenuItem();
             this.miImonUninitialize = new System.Windows.Forms.ToolStripMenuItem();
             this.miAbout = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAboutCheckForUpdates = new System.Windows.Forms.ToolStripMenuItem();
             this.miAboutXbmcOniMon = new System.Windows.Forms.ToolStripMenuItem();
             this.splitter = new System.Windows.Forms.SplitContainer();
             this.pNavigation = new System.Windows.Forms.Panel();
+            this.bNavigationXbmc = new iMon.XBMC.NavigationButton();
             this.iLOptions = new System.Windows.Forms.ImageList(this.components);
+            this.bNavigationImon = new iMon.XBMC.NavigationButton();
+            this.bNavigationGeneral = new iMon.XBMC.NavigationButton();
             this.tabOptions = new System.Windows.Forms.TabControl();
             this.tpImon = new System.Windows.Forms.TabPage();
             this.groupBox14 = new System.Windows.Forms.GroupBox();
@@ -94,6 +98,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.rbXbmcMovieStayIdle = new System.Windows.Forms.RadioButton();
+            this.tbXbmcMovieSingleText = new iMon.XBMC.SuggestionBox();
             this.rbXbmcMovieSingleText = new System.Windows.Forms.RadioButton();
             this.groupBox16 = new System.Windows.Forms.GroupBox();
             this.cbXbmcControlModeShowWindow = new System.Windows.Forms.CheckBox();
@@ -102,14 +107,17 @@
             this.cbXbmcControlModeEnable = new System.Windows.Forms.CheckBox();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.rbXbmcTvStayIdle = new System.Windows.Forms.RadioButton();
+            this.tbXbmcTvSingleText = new iMon.XBMC.SuggestionBox();
             this.rbXbmcTvSingleText = new System.Windows.Forms.RadioButton();
             this.cbXbmcTvShowTvHdtvIcon = new System.Windows.Forms.CheckBox();
             this.cbXbmcTvMediaTypeIcon = new System.Windows.Forms.CheckBox();
             this.groupBox11 = new System.Windows.Forms.GroupBox();
             this.rbXbmcMusicVideoStayIdle = new System.Windows.Forms.RadioButton();
+            this.tbXbmcMusicVideoSingleText = new iMon.XBMC.SuggestionBox();
             this.rbXbmcMusicVideoSingleText = new System.Windows.Forms.RadioButton();
             this.groupBox10 = new System.Windows.Forms.GroupBox();
             this.rbXbmcMusicStayIdle = new System.Windows.Forms.RadioButton();
+            this.tbXbmcMusicSingleText = new iMon.XBMC.SuggestionBox();
             this.rbXbmcMusicSingleText = new System.Windows.Forms.RadioButton();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cbXbmcIdleShowSeconds = new System.Windows.Forms.CheckBox();
@@ -136,13 +144,7 @@
             this.trayMenuImon = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.trayMenuClose = new System.Windows.Forms.ToolStripMenuItem();
-            this.bNavigationXbmc = new iMon.XBMC.NavigationButton();
-            this.bNavigationImon = new iMon.XBMC.NavigationButton();
-            this.bNavigationGeneral = new iMon.XBMC.NavigationButton();
-            this.tbXbmcMovieSingleText = new iMon.XBMC.SuggestionBox();
-            this.tbXbmcTvSingleText = new iMon.XBMC.SuggestionBox();
-            this.tbXbmcMusicVideoSingleText = new iMon.XBMC.SuggestionBox();
-            this.tbXbmcMusicSingleText = new iMon.XBMC.SuggestionBox();
+            this.cbGeneralCheckForUpdateOnStart = new System.Windows.Forms.CheckBox();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.splitter)).BeginInit();
             this.splitter.Panel1.SuspendLayout();
@@ -269,10 +271,18 @@
             // miAbout
             // 
             this.miAbout.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miAboutCheckForUpdates,
             this.miAboutXbmcOniMon});
             this.miAbout.Name = "miAbout";
             this.miAbout.Size = new System.Drawing.Size(52, 20);
             this.miAbout.Text = "About";
+            // 
+            // miAboutCheckForUpdates
+            // 
+            this.miAboutCheckForUpdates.Name = "miAboutCheckForUpdates";
+            this.miAboutCheckForUpdates.Size = new System.Drawing.Size(191, 22);
+            this.miAboutCheckForUpdates.Text = "Check for updates ...";
+            this.miAboutCheckForUpdates.Click += new System.EventHandler(this.miAboutCheckForUpdates_Click);
             // 
             // miAboutXbmcOniMon
             // 
@@ -311,6 +321,24 @@
             this.pNavigation.Size = new System.Drawing.Size(76, 425);
             this.pNavigation.TabIndex = 0;
             // 
+            // bNavigationXbmc
+            // 
+            this.bNavigationXbmc.ActiveImageIndex = 7;
+            this.bNavigationXbmc.BackColor = System.Drawing.Color.Transparent;
+            this.bNavigationXbmc.DefaultImageIndex = 6;
+            this.bNavigationXbmc.FlatAppearance.BorderSize = 0;
+            this.bNavigationXbmc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bNavigationXbmc.HoverImageIndex = 8;
+            this.bNavigationXbmc.ImageIndex = 6;
+            this.bNavigationXbmc.ImageList = this.iLOptions;
+            this.bNavigationXbmc.Location = new System.Drawing.Point(-1, 147);
+            this.bNavigationXbmc.Margin = new System.Windows.Forms.Padding(0);
+            this.bNavigationXbmc.Name = "bNavigationXbmc";
+            this.bNavigationXbmc.Size = new System.Drawing.Size(74, 74);
+            this.bNavigationXbmc.TabIndex = 5;
+            this.bNavigationXbmc.UseVisualStyleBackColor = false;
+            this.bNavigationXbmc.Click += new System.EventHandler(this.bNavigationXbmc_Click);
+            // 
             // iLOptions
             // 
             this.iLOptions.ImageStream = ((System.Windows.Forms.ImageListStreamer) (resources.GetObject("iLOptions.ImageStream")));
@@ -324,6 +352,42 @@
             this.iLOptions.Images.SetKeyName(6, "XBMC");
             this.iLOptions.Images.SetKeyName(7, "XBMCActive");
             this.iLOptions.Images.SetKeyName(8, "XBMCHover");
+            // 
+            // bNavigationImon
+            // 
+            this.bNavigationImon.ActiveImageIndex = 4;
+            this.bNavigationImon.BackColor = System.Drawing.Color.Transparent;
+            this.bNavigationImon.DefaultImageIndex = 3;
+            this.bNavigationImon.FlatAppearance.BorderSize = 0;
+            this.bNavigationImon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bNavigationImon.HoverImageIndex = 5;
+            this.bNavigationImon.ImageIndex = 3;
+            this.bNavigationImon.ImageList = this.iLOptions;
+            this.bNavigationImon.Location = new System.Drawing.Point(-1, 73);
+            this.bNavigationImon.Margin = new System.Windows.Forms.Padding(0);
+            this.bNavigationImon.Name = "bNavigationImon";
+            this.bNavigationImon.Size = new System.Drawing.Size(74, 74);
+            this.bNavigationImon.TabIndex = 4;
+            this.bNavigationImon.UseVisualStyleBackColor = false;
+            this.bNavigationImon.Click += new System.EventHandler(this.bNavigationImon_Click);
+            // 
+            // bNavigationGeneral
+            // 
+            this.bNavigationGeneral.ActiveImageIndex = 1;
+            this.bNavigationGeneral.BackColor = System.Drawing.Color.Transparent;
+            this.bNavigationGeneral.DefaultImageIndex = 0;
+            this.bNavigationGeneral.FlatAppearance.BorderSize = 0;
+            this.bNavigationGeneral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.bNavigationGeneral.HoverImageIndex = 2;
+            this.bNavigationGeneral.ImageIndex = 0;
+            this.bNavigationGeneral.ImageList = this.iLOptions;
+            this.bNavigationGeneral.Location = new System.Drawing.Point(-1, -1);
+            this.bNavigationGeneral.Margin = new System.Windows.Forms.Padding(0);
+            this.bNavigationGeneral.Name = "bNavigationGeneral";
+            this.bNavigationGeneral.Size = new System.Drawing.Size(74, 74);
+            this.bNavigationGeneral.TabIndex = 3;
+            this.bNavigationGeneral.UseVisualStyleBackColor = false;
+            this.bNavigationGeneral.Click += new System.EventHandler(this.bNavigationGeneral_Click);
             // 
             // tabOptions
             // 
@@ -502,7 +566,7 @@
             // groupBox15
             // 
             this.groupBox15.Controls.Add(this.cbGeneralDebugEnable);
-            this.groupBox15.Location = new System.Drawing.Point(10, 220);
+            this.groupBox15.Location = new System.Drawing.Point(10, 243);
             this.groupBox15.Name = "groupBox15";
             this.groupBox15.Size = new System.Drawing.Size(385, 45);
             this.groupBox15.TabIndex = 2;
@@ -526,7 +590,7 @@
             this.groupBox4.Controls.Add(this.cbGeneralTrayHideOnClose);
             this.groupBox4.Controls.Add(this.cbGeneralTrayStartMinimized);
             this.groupBox4.Controls.Add(this.cbGeneralTrayEnabled);
-            this.groupBox4.Location = new System.Drawing.Point(10, 80);
+            this.groupBox4.Location = new System.Drawing.Point(10, 103);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(386, 134);
             this.groupBox4.TabIndex = 1;
@@ -586,11 +650,12 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cbGeneralCheckForUpdateOnStart);
             this.groupBox2.Controls.Add(this.cbGeneralStartupConnect);
             this.groupBox2.Controls.Add(this.cbGeneralStartupAuto);
             this.groupBox2.Location = new System.Drawing.Point(10, 6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(386, 68);
+            this.groupBox2.Size = new System.Drawing.Size(386, 91);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Startup";
@@ -877,6 +942,17 @@
             this.rbXbmcMovieStayIdle.Text = "Stay Idle";
             this.rbXbmcMovieStayIdle.UseVisualStyleBackColor = true;
             // 
+            // tbXbmcMovieSingleText
+            // 
+            this.tbXbmcMovieSingleText.Delimiter = "%";
+            this.tbXbmcMovieSingleText.Enabled = false;
+            this.tbXbmcMovieSingleText.Location = new System.Drawing.Point(33, 40);
+            this.tbXbmcMovieSingleText.MaximumRows = 2;
+            this.tbXbmcMovieSingleText.Name = "tbXbmcMovieSingleText";
+            this.tbXbmcMovieSingleText.Size = new System.Drawing.Size(336, 20);
+            this.tbXbmcMovieSingleText.StartAndEnd = true;
+            this.tbXbmcMovieSingleText.TabIndex = 5;
+            // 
             // rbXbmcMovieSingleText
             // 
             this.rbXbmcMovieSingleText.AutoSize = true;
@@ -971,6 +1047,17 @@
             this.rbXbmcTvStayIdle.Text = "Stay Idle";
             this.rbXbmcTvStayIdle.UseVisualStyleBackColor = true;
             // 
+            // tbXbmcTvSingleText
+            // 
+            this.tbXbmcTvSingleText.Delimiter = "%";
+            this.tbXbmcTvSingleText.Enabled = false;
+            this.tbXbmcTvSingleText.Location = new System.Drawing.Point(33, 64);
+            this.tbXbmcTvSingleText.MaximumRows = 2;
+            this.tbXbmcTvSingleText.Name = "tbXbmcTvSingleText";
+            this.tbXbmcTvSingleText.Size = new System.Drawing.Size(336, 20);
+            this.tbXbmcTvSingleText.StartAndEnd = true;
+            this.tbXbmcTvSingleText.TabIndex = 9;
+            // 
             // rbXbmcTvSingleText
             // 
             this.rbXbmcTvSingleText.AutoSize = true;
@@ -1026,6 +1113,17 @@
             this.rbXbmcMusicVideoStayIdle.Text = "Stay Idle";
             this.rbXbmcMusicVideoStayIdle.UseVisualStyleBackColor = true;
             // 
+            // tbXbmcMusicVideoSingleText
+            // 
+            this.tbXbmcMusicVideoSingleText.Delimiter = "%";
+            this.tbXbmcMusicVideoSingleText.Enabled = false;
+            this.tbXbmcMusicVideoSingleText.Location = new System.Drawing.Point(33, 40);
+            this.tbXbmcMusicVideoSingleText.MaximumRows = 2;
+            this.tbXbmcMusicVideoSingleText.Name = "tbXbmcMusicVideoSingleText";
+            this.tbXbmcMusicVideoSingleText.Size = new System.Drawing.Size(336, 20);
+            this.tbXbmcMusicVideoSingleText.StartAndEnd = true;
+            this.tbXbmcMusicVideoSingleText.TabIndex = 9;
+            // 
             // rbXbmcMusicVideoSingleText
             // 
             this.rbXbmcMusicVideoSingleText.AutoSize = true;
@@ -1060,6 +1158,17 @@
             this.rbXbmcMusicStayIdle.TabStop = true;
             this.rbXbmcMusicStayIdle.Text = "Stay Idle";
             this.rbXbmcMusicStayIdle.UseVisualStyleBackColor = true;
+            // 
+            // tbXbmcMusicSingleText
+            // 
+            this.tbXbmcMusicSingleText.Delimiter = "%";
+            this.tbXbmcMusicSingleText.Enabled = false;
+            this.tbXbmcMusicSingleText.Location = new System.Drawing.Point(33, 40);
+            this.tbXbmcMusicSingleText.MaximumRows = 2;
+            this.tbXbmcMusicSingleText.Name = "tbXbmcMusicSingleText";
+            this.tbXbmcMusicSingleText.Size = new System.Drawing.Size(336, 20);
+            this.tbXbmcMusicSingleText.StartAndEnd = true;
+            this.tbXbmcMusicSingleText.TabIndex = 9;
             // 
             // rbXbmcMusicSingleText
             // 
@@ -1327,103 +1436,15 @@
             this.trayMenuClose.Text = "Close";
             this.trayMenuClose.Click += new System.EventHandler(this.trayMenuClose_Click);
             // 
-            // bNavigationXbmc
+            // cbGeneralCheckForUpdateOnStart
             // 
-            this.bNavigationXbmc.ActiveImageIndex = 7;
-            this.bNavigationXbmc.BackColor = System.Drawing.Color.Transparent;
-            this.bNavigationXbmc.DefaultImageIndex = 6;
-            this.bNavigationXbmc.FlatAppearance.BorderSize = 0;
-            this.bNavigationXbmc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bNavigationXbmc.HoverImageIndex = 8;
-            this.bNavigationXbmc.ImageIndex = 6;
-            this.bNavigationXbmc.ImageList = this.iLOptions;
-            this.bNavigationXbmc.Location = new System.Drawing.Point(-1, 147);
-            this.bNavigationXbmc.Margin = new System.Windows.Forms.Padding(0);
-            this.bNavigationXbmc.Name = "bNavigationXbmc";
-            this.bNavigationXbmc.Size = new System.Drawing.Size(74, 74);
-            this.bNavigationXbmc.TabIndex = 5;
-            this.bNavigationXbmc.UseVisualStyleBackColor = false;
-            this.bNavigationXbmc.Click += new System.EventHandler(this.bNavigationXbmc_Click);
-            // 
-            // bNavigationImon
-            // 
-            this.bNavigationImon.ActiveImageIndex = 4;
-            this.bNavigationImon.BackColor = System.Drawing.Color.Transparent;
-            this.bNavigationImon.DefaultImageIndex = 3;
-            this.bNavigationImon.FlatAppearance.BorderSize = 0;
-            this.bNavigationImon.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bNavigationImon.HoverImageIndex = 5;
-            this.bNavigationImon.ImageIndex = 3;
-            this.bNavigationImon.ImageList = this.iLOptions;
-            this.bNavigationImon.Location = new System.Drawing.Point(-1, 73);
-            this.bNavigationImon.Margin = new System.Windows.Forms.Padding(0);
-            this.bNavigationImon.Name = "bNavigationImon";
-            this.bNavigationImon.Size = new System.Drawing.Size(74, 74);
-            this.bNavigationImon.TabIndex = 4;
-            this.bNavigationImon.UseVisualStyleBackColor = false;
-            this.bNavigationImon.Click += new System.EventHandler(this.bNavigationImon_Click);
-            // 
-            // bNavigationGeneral
-            // 
-            this.bNavigationGeneral.ActiveImageIndex = 1;
-            this.bNavigationGeneral.BackColor = System.Drawing.Color.Transparent;
-            this.bNavigationGeneral.DefaultImageIndex = 0;
-            this.bNavigationGeneral.FlatAppearance.BorderSize = 0;
-            this.bNavigationGeneral.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bNavigationGeneral.HoverImageIndex = 2;
-            this.bNavigationGeneral.ImageIndex = 0;
-            this.bNavigationGeneral.ImageList = this.iLOptions;
-            this.bNavigationGeneral.Location = new System.Drawing.Point(-1, -1);
-            this.bNavigationGeneral.Margin = new System.Windows.Forms.Padding(0);
-            this.bNavigationGeneral.Name = "bNavigationGeneral";
-            this.bNavigationGeneral.Size = new System.Drawing.Size(74, 74);
-            this.bNavigationGeneral.TabIndex = 3;
-            this.bNavigationGeneral.UseVisualStyleBackColor = false;
-            this.bNavigationGeneral.Click += new System.EventHandler(this.bNavigationGeneral_Click);
-            // 
-            // tbXbmcMovieSingleText
-            // 
-            this.tbXbmcMovieSingleText.Delimiter = "%";
-            this.tbXbmcMovieSingleText.Enabled = false;
-            this.tbXbmcMovieSingleText.Location = new System.Drawing.Point(33, 40);
-            this.tbXbmcMovieSingleText.MaximumRows = 2;
-            this.tbXbmcMovieSingleText.Name = "tbXbmcMovieSingleText";
-            this.tbXbmcMovieSingleText.Size = new System.Drawing.Size(336, 20);
-            this.tbXbmcMovieSingleText.StartAndEnd = true;
-            this.tbXbmcMovieSingleText.TabIndex = 5;
-            // 
-            // tbXbmcTvSingleText
-            // 
-            this.tbXbmcTvSingleText.Delimiter = "%";
-            this.tbXbmcTvSingleText.Enabled = false;
-            this.tbXbmcTvSingleText.Location = new System.Drawing.Point(33, 64);
-            this.tbXbmcTvSingleText.MaximumRows = 2;
-            this.tbXbmcTvSingleText.Name = "tbXbmcTvSingleText";
-            this.tbXbmcTvSingleText.Size = new System.Drawing.Size(336, 20);
-            this.tbXbmcTvSingleText.StartAndEnd = true;
-            this.tbXbmcTvSingleText.TabIndex = 9;
-            // 
-            // tbXbmcMusicVideoSingleText
-            // 
-            this.tbXbmcMusicVideoSingleText.Delimiter = "%";
-            this.tbXbmcMusicVideoSingleText.Enabled = false;
-            this.tbXbmcMusicVideoSingleText.Location = new System.Drawing.Point(33, 40);
-            this.tbXbmcMusicVideoSingleText.MaximumRows = 2;
-            this.tbXbmcMusicVideoSingleText.Name = "tbXbmcMusicVideoSingleText";
-            this.tbXbmcMusicVideoSingleText.Size = new System.Drawing.Size(336, 20);
-            this.tbXbmcMusicVideoSingleText.StartAndEnd = true;
-            this.tbXbmcMusicVideoSingleText.TabIndex = 9;
-            // 
-            // tbXbmcMusicSingleText
-            // 
-            this.tbXbmcMusicSingleText.Delimiter = "%";
-            this.tbXbmcMusicSingleText.Enabled = false;
-            this.tbXbmcMusicSingleText.Location = new System.Drawing.Point(33, 40);
-            this.tbXbmcMusicSingleText.MaximumRows = 2;
-            this.tbXbmcMusicSingleText.Name = "tbXbmcMusicSingleText";
-            this.tbXbmcMusicSingleText.Size = new System.Drawing.Size(336, 20);
-            this.tbXbmcMusicSingleText.StartAndEnd = true;
-            this.tbXbmcMusicSingleText.TabIndex = 9;
+            this.cbGeneralCheckForUpdateOnStart.AutoSize = true;
+            this.cbGeneralCheckForUpdateOnStart.Location = new System.Drawing.Point(7, 67);
+            this.cbGeneralCheckForUpdateOnStart.Name = "cbGeneralCheckForUpdateOnStart";
+            this.cbGeneralCheckForUpdateOnStart.Size = new System.Drawing.Size(158, 17);
+            this.cbGeneralCheckForUpdateOnStart.TabIndex = 2;
+            this.cbGeneralCheckForUpdateOnStart.Text = "Check for update on startup";
+            this.cbGeneralCheckForUpdateOnStart.UseVisualStyleBackColor = true;
             // 
             // XBMC
             // 
@@ -1605,6 +1626,8 @@
         private System.Windows.Forms.CheckBox cbXbmcIdleShowSeconds;
         private System.Windows.Forms.TextBox tbXbmcTcpPort;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ToolStripMenuItem miAboutCheckForUpdates;
+        private System.Windows.Forms.CheckBox cbGeneralCheckForUpdateOnStart;
 
 
     }
