@@ -142,6 +142,7 @@ namespace iMon.XBMC
 
         public void SetText(string text, int delay)
         {
+            // TODO: Indroduce line breaker to be able to correctly (as desired) display 2 lines on VFD displays
             this.SetText(text, text, string.Empty, delay);
         }
 

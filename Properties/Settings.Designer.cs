@@ -650,7 +650,7 @@ namespace iMon.XBMC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public int XbmcOnEventTextDelayMS {
             get {
                 return ((int)(this["XbmcOnEventTextDelayMS"]));

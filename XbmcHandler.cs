@@ -260,6 +260,7 @@ namespace iMon.XBMC
             if (Settings.Default.XbmcOnConnectedText.CompareTo("") != 0)
             {
                 this.display.SetText(Settings.Default.XbmcOnConnectedText, Settings.Default.XbmcOnEventTextDelayMS);
+                this.displayIdle();
             }
 
             this.update();
@@ -311,6 +312,7 @@ namespace iMon.XBMC
 
             if (Settings.Default.XbmcOnPauseText.CompareTo("") != 0)
             {
+                // TODO: Display the text exactly as desired (i.e. introduce the line breaker into patterns to be able to display 2 lines on VFD displays)
                 this.display.SetText(Settings.Default.XbmcOnPauseText, Settings.Default.XbmcOnPauseText, e.Position.ToString(), Settings.Default.XbmcOnEventTextDelayMS);
             }
 
@@ -920,6 +922,7 @@ namespace iMon.XBMC
             }
             else
             {
+                this.displayIdle();
                 return;
             }
 
@@ -969,6 +972,7 @@ namespace iMon.XBMC
             }
             else
             {
+                this.displayIdle();
                 return;
             }
 
@@ -1016,6 +1020,7 @@ namespace iMon.XBMC
             }
             else
             {
+                this.displayIdle();
                 return;
             }
 
@@ -1063,6 +1068,7 @@ namespace iMon.XBMC
             }
             else
             {
+                this.displayIdle();
                 return;
             }
 
