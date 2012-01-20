@@ -114,6 +114,15 @@ namespace iMon.XBMC
             if (Settings.Default.GeneralCheckForUpdateOnStart)
                 Updating.update(true);
 
+            // Check if this is a newer version. If so, do settings update
+            if (Settings.Default.CallUpgrade)
+            {
+                Settings.Default.Upgrade();
+                Settings.Default.CallUpgrade = false;
+                Settings.Default.Save();
+                Settings.Default.Reload();
+            }
+
             // Setting up iMON
             Logging.Log("Setting up iMON");
             this.imon = new iMonWrapperApi();
