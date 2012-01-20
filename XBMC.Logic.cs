@@ -107,8 +107,6 @@ namespace iMon.XBMC
             this.xbmcConnectionTimer = new Timer();
             this.xbmcConnectionTimer.Tick += xbmcTryConnect;
 
-            this.settingsUpdate();
-            this.setupSettingsChanges(this.tabOptions);
 
             // Check for update
             if (Settings.Default.GeneralCheckForUpdateOnStart)
@@ -117,11 +115,18 @@ namespace iMon.XBMC
             // Check if this is a newer version. If so, do settings update
             if (Settings.Default.CallUpgrade)
             {
+                Logging.Log("Trying to upgrade settings");
                 Settings.Default.Upgrade();
                 Settings.Default.CallUpgrade = false;
                 Settings.Default.Save();
                 Settings.Default.Reload();
+                //this.settingsUpdate();
+                Logging.Log("Settings upgraded");
+                MessageBox.Show("Settings upgraded from the previous version");
             }
+
+            this.settingsUpdate();
+            this.setupSettingsChanges(this.tabOptions);
 
             // Setting up iMON
             Logging.Log("Setting up iMON");
