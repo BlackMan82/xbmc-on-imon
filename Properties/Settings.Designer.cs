@@ -638,18 +638,6 @@ namespace iMon.XBMC.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("END")]
-        public string XbmcOnEndText {
-            get {
-                return ((string)(this["XbmcOnEndText"]));
-            }
-            set {
-                this["XbmcOnEndText"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1000")]
         public int XbmcOnEventTextDelayMS {
             get {

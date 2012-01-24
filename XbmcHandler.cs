@@ -92,7 +92,7 @@ namespace iMon.XBMC
             this.xbmc.Player.PlaybackPaused         +=  this.xbmcPlaybackPaused;
             //this.xbmc.Player.PlaybackResumed        +=  this.xbmcPlaybackResumed;
             this.xbmc.Player.PlaybackStopped        +=  this.xbmcPlaybackStopped;
-            this.xbmc.Player.PlaybackEnded          +=  this.xbmcPlaybackEnded;
+            //this.xbmc.Player.PlaybackEnded          +=  this.xbmcPlaybackEnded;
             this.xbmc.Player.PlaybackSeek           +=  this.xbmcPlaybackSeek;
             this.xbmc.Player.PlaybackSeekChapter    +=  this.xbmcPlaybackSeek;
             this.xbmc.Player.PlaybackSpeedChanged   +=  this.xbmcPlaybackSpeedChanged;
@@ -195,7 +195,7 @@ namespace iMon.XBMC
             this.xbmc.Player.PlaybackPaused -= this.xbmcPlaybackPaused;
             //this.xbmc.Player.PlaybackResumed -= this.xbmcPlaybackResumed;
             this.xbmc.Player.PlaybackStopped -= this.xbmcPlaybackStopped;
-            this.xbmc.Player.PlaybackEnded -= this.xbmcPlaybackEnded;
+            //this.xbmc.Player.PlaybackEnded -= this.xbmcPlaybackEnded;
             this.xbmc.Player.PlaybackSeek -= this.xbmcPlaybackSeek;
             this.xbmc.Player.PlaybackSeekChapter -= this.xbmcPlaybackSeek;
             this.xbmc.Player.PlaybackSpeedChanged -= this.xbmcPlaybackSpeedChanged;
@@ -357,19 +357,19 @@ namespace iMon.XBMC
             this.update();
         }
 
-        private void xbmcPlaybackEnded(object sender, EventArgs e)
-        {
-            Logging.Log(LoggingArea, "Playback ended");
+        //private void xbmcPlaybackEnded(object sender, EventArgs e)
+        //{
+        //    Logging.Log(LoggingArea, "Playback ended");
 
-            if (Settings.Default.XbmcOnEndText.CompareTo("") != 0)
-            {
-                this.display.SetText(Settings.Default.XbmcOnEndText, Settings.Default.XbmcOnEventTextDelayMS);
-            }
+        //    if (Settings.Default.XbmcOnEndText.CompareTo("") != 0)
+        //    {
+        //        this.display.SetText(Settings.Default.XbmcOnEndText, Settings.Default.XbmcOnEventTextDelayMS);
+        //    }
 
-            this.playbackStopped();
+        //    this.playbackStopped();
 
-            this.update();
-        }
+        //    this.update();
+        //}
 
         private void xbmcPlaybackSeek(object sender, XbmcPlayerPlaybackPositionChangedEventArgs e)
         {
