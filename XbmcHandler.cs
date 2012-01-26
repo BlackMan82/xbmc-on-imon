@@ -248,10 +248,10 @@ namespace iMon.XBMC
                                                                                   "System.Time(mm)",
                                                                                   "System.Time(ss)");
                 this.systemTime = DateTime.Now;
-                this.systemTime -= this.systemTime.TimeOfDay;
-                this.systemTime +=
-                    TimeSpan.Parse(time["System.Time(hh)"] + ":" + time["System.Time(mm)"] + ":" +
-                                   time["System.Time(ss)"]);
+                //this.systemTime -= this.systemTime.TimeOfDay;
+                //this.systemTime +=
+                //    TimeSpan.Parse(time["System.Time(hh)"] + ":" + time["System.Time(mm)"] + ":" +
+                //                   time["System.Time(ss)"]);
                 this.validSystemTime = true;
 
                 this.systemTimeTimer.Start();
@@ -437,7 +437,8 @@ namespace iMon.XBMC
 
         private void systemTimeTimerUpdate(object sender, ElapsedEventArgs e)
         {
-            this.systemTime += TimeSpan.FromMilliseconds(SystemTimeUpdateInterval);
+            //this.systemTime += TimeSpan.FromMilliseconds(SystemTimeUpdateInterval);
+            this.systemTime = DateTime.Now;
 
             if (this.showSystemTime && this.validSystemTime)
             {
