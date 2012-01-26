@@ -229,7 +229,12 @@ namespace iMon.XBMC
                 }
             }
 
-            this.semReady.Release();
+            try
+            {
+                this.semReady.Release();
+            }
+            catch (SemaphoreFullException)
+            { }
 
             if (this.player != null)
             {

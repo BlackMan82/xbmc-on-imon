@@ -351,7 +351,12 @@ namespace iMon.XBMC
                         this.vfd = true;
                     }
 
-                    this.semReady.Release();
+                    try
+                    {
+                        this.semReady.Release();
+                    }
+                    catch (SemaphoreFullException)
+                    { }
                 }
                 else
                 {
