@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("XBMC on iMON Display")]
-[assembly: AssemblyCopyright("Copyright © Sascha Montellese 2010")]
+[assembly: AssemblyCopyright("Copyright © Sascha Montellese 2010, Martin Gruber 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

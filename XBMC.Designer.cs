@@ -146,7 +146,7 @@
             this.trayMenuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.cbGeneralCheckForUpdateOnStart = new System.Windows.Forms.CheckBox();
             this.menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.splitter)).BeginInit();
+            //((System.ComponentModel.ISupportInitialize) (this.splitter)).BeginInit();
             this.splitter.Panel1.SuspendLayout();
             this.splitter.Panel2.SuspendLayout();
             this.splitter.SuspendLayout();
@@ -1465,7 +1465,7 @@
             this.menu.PerformLayout();
             this.splitter.Panel1.ResumeLayout(false);
             this.splitter.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.splitter)).EndInit();
+            //((System.ComponentModel.ISupportInitialize) (this.splitter)).EndInit();
             this.splitter.ResumeLayout(false);
             this.pNavigation.ResumeLayout(false);
             this.tabOptions.ResumeLayout(false);

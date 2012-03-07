@@ -82,7 +82,8 @@ namespace iMon.XBMC
                     try
                     {
                         string versionNumber = line.Split(' ')[VersionNumberPosition].Substring(1);
-                        Version.TryParse(versionNumber, out Updating.newestVersion);
+                        Updating.newestVersion = new Version(versionNumber);
+                        //Version.TryParse(versionNumber, out Updating.newestVersion);
                     }
                     catch (Exception)
                     {
