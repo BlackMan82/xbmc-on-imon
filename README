@@ -25,8 +25,8 @@ please report this so we can help investigate the problem.
 2. Software Requirements
 ========================
  - Windows XP or newer
- - Microsoft .NET Framework 4.0: 
-   http://www.microsoft.com/download/en/details.aspx?id=17718
+ - Microsoft .NET Framework 2.0: 
+   http://www.microsoft.com/download/en/details.aspx?id=19
  - iMON Manager v8.04.0629: You need to install iMON Manager v8.04.0629 or higher
    (http://download.soundgraph.com/path/setup/iMON_8_04_0629.zip), 
  - XBMC Eden Beta 1 or newer: http://mirrors.xbmc.org/releases/win32/
