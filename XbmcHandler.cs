@@ -725,6 +725,8 @@ namespace iMon.XBMC
                 }
 
                 icon = iMonLcdIcons.Music;
+                // TODO: Handle the situation when this.currentlyPlaying == null (i.e. the Playlist.Audio.GetCurrentItem() failed!!!)
+                // E.g. move the fallback functions into the XbmcAudioPlaylist.GetCurrentItem() function
                 this.currentlyPlaying = this.xbmc.Playlist.Audio.GetCurrentItem();
 
                 //Logging.Log(LoggingArea, "Current audio item: " + this.currentlyPlaying.);
@@ -743,6 +745,8 @@ namespace iMon.XBMC
             else
             {
                 icon = iMonLcdIcons.Movie;
+                // TODO: Handle the situation when this.currentlyPlaying == null (i.e. the Playlist.Video.GetCurrentItem() failed!!!)
+                // E.g. move the fallback functions into the XbmcVideoPlaylist.GetCurrentItem() function
                 this.currentlyPlaying = this.xbmc.Playlist.Video.GetCurrentItem();
 
                 if (this.currentlyPlaying is XbmcTvEpisode)

@@ -46,7 +46,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.lImonDisplayApiWrapperVersion = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // bClose
@@ -84,11 +83,11 @@
             // 
             this.lCopyright.AutoSize = true;
             this.lCopyright.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.lCopyright.Location = new System.Drawing.Point(93, 174);
+            this.lCopyright.Location = new System.Drawing.Point(40, 174);
             this.lCopyright.Name = "lCopyright";
-            this.lCopyright.Size = new System.Drawing.Size(203, 13);
+            this.lCopyright.Size = new System.Drawing.Size(320, 13);
             this.lCopyright.TabIndex = 3;
-            this.lCopyright.Text = "Copyright Sascha Montellese 2010";
+            this.lCopyright.Text = "Copyright Sascha Montellese 2010, Martin Gruber 2011";
             this.lCopyright.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label3
@@ -230,17 +229,6 @@
             this.label10.TabIndex = 15;
             this.label10.Text = "iMON Display API Wrapper#";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte) (0)));
-            this.label2.Location = new System.Drawing.Point(93, 187);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(173, 13);
-            this.label2.TabIndex = 17;
-            this.label2.Text = "Edited by Martin Gruber 2011";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
             // AboutDialog
             // 
             this.AcceptButton = this.bClose;
@@ -248,7 +236,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.bClose;
             this.ClientSize = new System.Drawing.Size(400, 442);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.lImonDisplayApiWrapperVersion);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lImonDisplayApiVersion);
@@ -298,6 +285,5 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lImonDisplayApiWrapperVersion;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label2;
     }
 }

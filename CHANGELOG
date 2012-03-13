@@ -6,6 +6,14 @@ CHANGELOG for "XBMC on iMON Display"
 [x]: fixed
 [p]: patched
 
+v0.1.9.4 Beta: March 13, 2012
+-------------------------------
+ - General
+   [p] .NET Framework 2.0 is sufficient now.
+ - XBMC
+   [x] Errors caused by unsupported id label of Video items.
+   [p] New version of XBMC JSON RPC# (v0.1.0.7).
+
 v0.1.9.3 Beta: January 26, 2012
 -------------------------------
  - General
