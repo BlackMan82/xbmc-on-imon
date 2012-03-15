@@ -1,6 +1,7 @@
 using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Reflection;
 
 using iMon.XBMC.Properties;
 
@@ -103,6 +104,8 @@ namespace iMon.XBMC
             }
             catch (Exception)
             { }
+
+            Logging.Log("Current version of XbmcOniMon: " + Assembly.GetExecutingAssembly().GetName().Version.ToString());
 
             this.xbmcConnectionTimer = new Timer();
             this.xbmcConnectionTimer.Tick += xbmcTryConnect;

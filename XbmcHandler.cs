@@ -234,7 +234,9 @@ namespace iMon.XBMC
                 this.semReady.Release();
             }
             catch (SemaphoreFullException)
-            { }
+            {
+                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semReady in XbmcHandler.xbmcConnected()");
+            }
 
             if (this.player != null)
             {
@@ -535,7 +537,9 @@ namespace iMon.XBMC
                 this.semWork.Release();
             }
             catch (SemaphoreFullException)
-            { }
+            {
+                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semWork in XbmcHandler.update()");
+            }
         }
 
         private void updateIcons()
@@ -729,6 +733,11 @@ namespace iMon.XBMC
                 // E.g. move the fallback functions into the XbmcAudioPlaylist.GetCurrentItem() function
                 this.currentlyPlaying = this.xbmc.Playlist.Audio.GetCurrentItem();
 
+                if (this.currentlyPlaying == null)
+                {
+                    Logging.Error(LoggingArea, "Currently playing item not identified (XbmcAudioPlayer)");
+                }
+
                 //Logging.Log(LoggingArea, "Current audio item: " + this.currentlyPlaying.);
 
                 this.displaySong();
@@ -748,6 +757,11 @@ namespace iMon.XBMC
                 // TODO: Handle the situation when this.currentlyPlaying == null (i.e. the Playlist.Video.GetCurrentItem() failed!!!)
                 // E.g. move the fallback functions into the XbmcVideoPlaylist.GetCurrentItem() function
                 this.currentlyPlaying = this.xbmc.Playlist.Video.GetCurrentItem();
+
+                if (this.currentlyPlaying == null)
+                {
+                    Logging.Error(LoggingArea, "Currently playing item not identified (XbmcVideoPlayer)");
+                }
 
                 if (this.currentlyPlaying is XbmcTvEpisode)
                 {
@@ -942,6 +956,7 @@ namespace iMon.XBMC
             }
             else
             {
+                Logging.Log(LoggingArea, "N/A Movie information - using fallback procedure");
                 IDictionary<string, string> info = this.getVideoPlayerInfoLabels();
                 if (info.Count > 0)
                 {
@@ -992,6 +1007,7 @@ namespace iMon.XBMC
             }
             else
             {
+                Logging.Log(LoggingArea, "N/A TV episode information - using fallback procedure");
                 IDictionary<string, string> info = this.getVideoPlayerInfoLabels();
                 if (info.Count > 0)
                 {
@@ -1040,6 +1056,7 @@ namespace iMon.XBMC
             }
             else
             {
+                Logging.Log(LoggingArea, "N/A Music video information - using fallback procedure");
                 IDictionary<string, string> info = this.getVideoPlayerInfoLabels();
                 if (info.Count > 0)
                 {
@@ -1088,6 +1105,7 @@ namespace iMon.XBMC
             }
             else
             {
+                Logging.Log(LoggingArea, "N/A Song information - using fallback procedure");
                 IDictionary<string, string> info = this.getAudioPlayerInfoLabels();
                 if (info.Count > 0)
                 {
@@ -1123,6 +1141,8 @@ namespace iMon.XBMC
 
             if (texts.Count == 0)
             {
+                Logging.Log(LoggingArea, "N/A media information - using filename from XBMC");
+
                 string path = this.xbmc.System.GetInfoLabel("Player.Filenameandpath");
 
                 if (!string.IsNullOrEmpty(path))

@@ -147,10 +147,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="iMonDisplayApiWrapperSharp, Version=0.1.0.9, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\iMonDisplayApiWrapperSharp\iMonDisplayApiWrapperSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json.Net20, Version=3.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>lib\XbmcJsonRpcSharp\Newtonsoft.Json.Net20.dll</HintPath>
@@ -158,10 +154,6 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="XBMCJsonRpcSharp, Version=0.1.0.6, Culture=neutral, processorArchitecture=x86">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\XbmcJsonRpcSharp\XBMCJsonRpcSharp.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="dialogs\AboutDialog.resx">
@@ -178,6 +170,16 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\imonapi-sharp\wrapper\iMonDisplayApiWrapper-Sharp.csproj">
+      <Project>{9B947F96-CCC2-42F8-9577-867C804ADA46}</Project>
+      <Name>iMonDisplayApiWrapper-Sharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\xbmc-jsonrpc-sharp\xbmc-jsonrpc-sharp\xbmc-jsonrpc-sharp.csproj">
+      <Project>{FDD0FEA4-6C57-4364-BC06-3BA64995F3FB}</Project>
+      <Name>xbmc-jsonrpc-sharp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

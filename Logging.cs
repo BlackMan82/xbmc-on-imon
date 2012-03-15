@@ -80,6 +80,7 @@ namespace iMon.XBMC
                 return;
             }
 
+            // Do not log "iMonNotResponding" messages when forbidden
             if (iMonNotRespondingLog == false && message.Contains("iMonNotResponding"))
             {
                 return;

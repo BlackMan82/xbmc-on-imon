@@ -29,7 +29,7 @@ namespace iMon.XBMC
 
         private System.Timers.Timer discRotation;
 
-        private const int DefaultDelay = 0;
+        private const int DefaultDelay = 500;
 
         private const string LoggingArea = "Display Handler";
         private const bool LogDisplayingIcons = false;
@@ -137,7 +137,7 @@ namespace iMon.XBMC
 
         public void SetText(string text)
         {
-            this.SetText(text, text, string.Empty, 0);
+            this.SetText(text, text, string.Empty, DefaultDelay);
         }
 
         public void SetText(string text, int delay)
@@ -155,7 +155,7 @@ namespace iMon.XBMC
         {
             lock (this.queueLock)
             {
-                Logging.Log(LoggingArea, "Setting text to \"" + lcd + "\"");
+                Logging.Log(LoggingArea, "DisplayHandler.SetText(" + lcd + ", " + vfdUpper + ", " + vfdLower + ", " + delay.ToString() + ")");
 
                 this.queue.Clear();
                 this.queue.Add(new Text(lcd, vfdUpper, vfdLower, delay));
@@ -167,7 +167,7 @@ namespace iMon.XBMC
 
         public void AddText(string text)
         {
-            this.AddText(text, text, string.Empty, 0);
+            this.AddText(text, text, string.Empty, DefaultDelay);
         }
 
         public void AddText(string text, int delay)
@@ -177,16 +177,18 @@ namespace iMon.XBMC
 
         public void AddText(string lcd, string vfdUpper, string vfdLower)
         {
-            this.AddText(lcd, vfdUpper, vfdLower, 0);
+            this.AddText(lcd, vfdUpper, vfdLower, DefaultDelay);
         }
 
         public void AddText(string lcd, string vfdUpper, string vfdLower, int delay)
         {
             lock (this.queueLock)
             {
-                Logging.Log(LoggingArea, "Adding text \"" + lcd + "\" to the queue");
+                Logging.Log(LoggingArea, "Adding text \"" + lcd + "\" to the queue with delay " + delay.ToString());
 
                 this.queue.Add(new Text(lcd, vfdUpper, vfdLower, delay));
+
+                Logging.Log(LoggingArea, "Queue length after addition: " + this.queue.Count.ToString());
 
                 if (this.queue.Count == 1)
                 {
@@ -197,7 +199,7 @@ namespace iMon.XBMC
 
         public void SetProgress(int position, int total)
         {
-            Logging.Log(LoggingArea, "Trying to set the progress bar to " + position.ToString() + "/" + total.ToString());
+            //Logging.Log(LoggingArea, "Trying to set the progress bar to " + position.ToString() + "/" + total.ToString());
 
             if (this.lcd)
             {
@@ -331,7 +333,9 @@ namespace iMon.XBMC
                 this.semWork.Release();
             }
             catch (SemaphoreFullException)
-            { }
+            {
+                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semWork in DisplayHandler.update()");
+            }
         }
 
         private void stateChanged(object sender, iMonStateChangedEventArgs e)
@@ -356,7 +360,9 @@ namespace iMon.XBMC
                         this.semReady.Release();
                     }
                     catch (SemaphoreFullException)
-                    { }
+                    {
+                        Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semReady in DisplayHandler.stateChanged()");
+                    }
                 }
                 else
                 {
@@ -419,27 +425,39 @@ namespace iMon.XBMC
 
         private void display(Text text)
         {
+            bool shown = false;
+
+            Logging.Log(LoggingArea, "Trying to display a text");
+
             lock (this.displayLock)
             {
                 if (this.lcd)
                 {
                     Logging.Log(LoggingArea, "LCD.SetText: " + text.Lcd);
 
-                    this.imon.LCD.SetText(text.Lcd.Substring(0, text.Lcd.Length < 256 ? text.Lcd.Length : 257));
+                    shown = this.imon.LCD.SetText(text.Lcd.Substring(0, text.Lcd.Length <= 256 ? text.Lcd.Length : 256));
                 }
                 if (this.vfd)
                 {
                     Logging.Log(LoggingArea, "VFD.SetText: " + text.VfdUpper + "; " + text.VfdLower);
                     
-                    this.imon.VFD.SetText(text.VfdUpper, text.VfdLower);
+                    shown = this.imon.VFD.SetText(text.VfdUpper, text.VfdLower);
                 }
 
-                if (text.Delay > 0)
+                if (shown)
                 {
-                    Logging.Log(LoggingArea, "Showing text for " + text.Delay + "ms");
+                    if (text.Delay > 0)
+                    {
+                        Logging.Log(LoggingArea, "Showing text for " + text.Delay + "ms");
 
-                    Thread.Sleep(text.Delay);
+                        Thread.Sleep(text.Delay);
+                    }
                 }
+                else
+                {
+                    Logging.Error(LoggingArea, "The text was not displayed succesfully");
+                }
+
             }
         }
 
