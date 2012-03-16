@@ -85,14 +85,14 @@ namespace iMon.XBMC
 
             try
             {
-                if (File.Exists(Logging.ErrorLog))
-                {
-                    if (File.Exists(Logging.ErrorLog + Logging.OldLog))
-                    {
-                        File.Delete(Logging.ErrorLog + Logging.OldLog);
-                    }
-                    File.Move(Logging.ErrorLog, Logging.ErrorLog + Logging.OldLog);
-                }
+                //if (File.Exists(Logging.ErrorLog))
+                //{
+                //    if (File.Exists(Logging.ErrorLog + Logging.OldLog))
+                //    {
+                //        File.Delete(Logging.ErrorLog + Logging.OldLog);
+                //    }
+                //    File.Move(Logging.ErrorLog, Logging.ErrorLog + Logging.OldLog);
+                //}
                 if (File.Exists(Logging.DebugLog))
                 {
                     if (File.Exists(Logging.DebugLog + Logging.OldLog))
@@ -181,7 +181,7 @@ namespace iMon.XBMC
             Logging.Log("Cancelling the XBMC handler...");
             this.xbmcHandler.CancelAsync();
             this.xbmcDisconnect(true);
-            
+
             this.Close();
         }
 
@@ -465,6 +465,9 @@ namespace iMon.XBMC
 
             Settings.Default.Save();
             Logging.Log("Settings saved");
+
+            //Logging.deinitialize();
+            //Logging.initialize(FileMode.Append);
 
             if (xbmcConnectionChanged)
             {

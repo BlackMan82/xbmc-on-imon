@@ -683,5 +683,23 @@ namespace iMon.XBMC.Properties {
                 this["CallUpgrade"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("XbmcOniMon.log")]
+        public string DebugLogFilename {
+            get {
+                return ((string)(this["DebugLogFilename"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(".old")]
+        public string OldLogExtension {
+            get {
+                return ((string)(this["OldLogExtension"]));
+            }
+        }
     }
 }

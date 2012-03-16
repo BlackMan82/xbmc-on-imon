@@ -235,7 +235,7 @@ namespace iMon.XBMC
             }
             catch (SemaphoreFullException)
             {
-                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semReady in XbmcHandler.xbmcConnected()");
+                Logging.Error(LoggingArea, "Error: 'SemaphoreFullException' for semReady in XbmcHandler.xbmcConnected()");
             }
 
             if (this.player != null)
@@ -538,7 +538,7 @@ namespace iMon.XBMC
             }
             catch (SemaphoreFullException)
             {
-                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semWork in XbmcHandler.update()");
+                Logging.Error(LoggingArea, "Error: 'SemaphoreFullException' for semWork in XbmcHandler.update()");
             }
         }
 

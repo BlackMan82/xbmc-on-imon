@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 
 namespace iMon.XBMC
 {
+
     public partial class XBMC : Form
     {
         #region Private variables
@@ -46,16 +47,18 @@ namespace iMon.XBMC
 
         #region Overrides of Control
 
-        [DllImport("user32")]
-        private static extern bool SetForegroundWindow(IntPtr hWnd);
+        //[DllImport("user32")]
+        //private static extern bool SetForegroundWindow(IntPtr hWnd);
 
         protected override void WndProc(ref Message msg)
         {
+
             if (msg.Msg == NativeMethods.WM_SHOWME)
             {
-                this.show();
-                SetForegroundWindow(msg.HWnd);
-
+                //MessageBox.Show("Got message: " + msg.ToString());
+                //this.show();
+                //SetForegroundWindow(msg.HWnd);
+                this.Activate();
             }
 
             base.WndProc(ref msg);

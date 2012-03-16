@@ -328,13 +328,19 @@ namespace iMon.XBMC
 
         private void update()
         {
+            if (!this.imon.IsInitialized)
+            {
+                Logging.Error(LoggingArea, "iMON not initialized.");
+                return;
+            }
+            
             try
             {
                 this.semWork.Release();
             }
             catch (SemaphoreFullException)
             {
-                Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semWork in DisplayHandler.update()");
+                Logging.Error(LoggingArea, "Error: 'SemaphoreFullException' for semWork in DisplayHandler.update()");
             }
         }
 
@@ -361,7 +367,7 @@ namespace iMon.XBMC
                     }
                     catch (SemaphoreFullException)
                     {
-                        Logging.Log(LoggingArea, "Error: 'SemaphoreFullException' for semReady in DisplayHandler.stateChanged()");
+                        Logging.Error(LoggingArea, "Error: 'SemaphoreFullException' for semReady in DisplayHandler.stateChanged()");
                     }
                 }
                 else
