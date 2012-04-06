@@ -29,7 +29,8 @@ namespace iMon.XBMC
             {
                 if (mutex.WaitOne(TimeSpan.Zero, true))
                 {
-                    Logging.initialize();
+                    Logging.initialize(Application.StartupPath);
+                    Logging.Log("Application path: " + Application.StartupPath);
 
                     try
                     {

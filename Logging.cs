@@ -24,17 +24,17 @@ namespace iMon.XBMC
 
         #region Public functions
 
-        public static void initialize()
+        public static void initialize(string logPath)
         {
-            initialize(FileMode.Create);
+            initialize(logPath, FileMode.Create);
         }
 
-        public static void initialize(FileMode mode)
+        public static void initialize(string logPath, FileMode mode)
         {
             TextWriterTraceListener traceListener;
             FileStream logFile;
 
-            logFile = File.Open(DebugLog, mode, FileAccess.Write, FileShare.Read);
+            logFile = File.Open(Path.Combine(logPath, DebugLog), mode, FileAccess.Write, FileShare.Read);
             traceListener = new TextWriterTraceListener(logFile, "XbmcOniMonLogger");
             Trace.Listeners.Add(traceListener);
             Trace.AutoFlush = true;
