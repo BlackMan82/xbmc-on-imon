@@ -6,22 +6,29 @@ CHANGELOG for "XBMC on iMON Display"
 [x]: fixed
 [p]: patched
 
+v0.1.9.5 Beta: April 13, 2012
+-------------------------------
+ - XBMC
+   [+] Displaying the channels setting according to the media currently being played
+   [x] Errors caused by unsupported labels
+   [p] New version of XBMC JSON RPC# (v0.1.0.9)
+
 v0.1.9.4 Beta: March 13, 2012
 -------------------------------
  - General
-   [p] .NET Framework 2.0 is sufficient now.
+   [p] .NET Framework 2.0 is sufficient now
  - XBMC
-   [x] Errors caused by unsupported id label of Video items.
-   [p] New version of XBMC JSON RPC# (v0.1.0.7).
+   [x] Errors caused by unsupported id label of Video items
+   [p] New version of XBMC JSON RPC# (v0.1.0.7)
 
 v0.1.9.3 Beta: January 26, 2012
 -------------------------------
  - General
-   [x] Displaying correct system time in every moment now.
-   [+] Upgrade of settings from previous versions of XbmcOniMon.
+   [x] Displaying correct system time in every moment now
+   [+] Upgrade of settings from previous versions of XbmcOniMon
  - XBMC
-   [x] Errors caused by unsupported episodeid label of TV Episodes.
-   [x] Connection to XBMC not reconnected properly after e.g. resume from sleep mode sometimes.
+   [x] Errors caused by unsupported episodeid label of TV Episodes
+   [x] Connection to XBMC not reconnected properly after e.g. resume from sleep mode sometimes
    [p] New version of XBMC JSON RPC# (v0.1.0.6)
  - iMON:
    [p] New version of iMon Display API Wrapper# (v0.1.0.9)

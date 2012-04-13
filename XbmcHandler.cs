@@ -542,57 +542,16 @@ namespace iMon.XBMC
             }
         }
 
-        private void updateIcons()
+        private void prepareSpeakerIcons(XbmcSoundSystems sound, out List<iMonLcdIcons> icons)
         {
-            Logging.Log(LoggingArea, "Updating icons");
+                icons = new List<iMonLcdIcons>();
 
-            // Updating Speaker icons
-            this.display.SetIcons(new List<iMonLcdIcons>()
-            {
-                iMonLcdIcons.SpeakerFrontLeft, 
-                iMonLcdIcons.SpeakerCenter,
-                iMonLcdIcons.SpeakerFrontRight,
-                iMonLcdIcons.SpeakerSideLeft,
-                iMonLcdIcons.SpeakerLFE,
-                iMonLcdIcons.SpeakerSideRight,
-                iMonLcdIcons.SpeakerRearLeft,
-                iMonLcdIcons.SpeakerSPDIF,
-                iMonLcdIcons.SpeakerRearRight,
-
-                iMonLcdIcons.Music, 
-                iMonLcdIcons.Movie, 
-                iMonLcdIcons.Tv, 
-                iMonLcdIcons.Photo, 
-                iMonLcdIcons.Webcast, 
-                iMonLcdIcons.NewsWeather,
-
-                iMonLcdIcons.AudioMP3,
-                iMonLcdIcons.AudioOGG,
-                iMonLcdIcons.AudioWAV,
-                iMonLcdIcons.AudioWMA,
-
-                iMonLcdIcons.VideoAC3,
-                iMonLcdIcons.VideoDTS,
-                iMonLcdIcons.VideoMPGAudio,
-                iMonLcdIcons.VideoWMA,
-                iMonLcdIcons.VideoDivX,
-                iMonLcdIcons.VideoXviD,
-                iMonLcdIcons.VideoMPG,
-                iMonLcdIcons.VideoWMV,
-
-                iMonLcdIcons.AspectRatioTv,
-                iMonLcdIcons.AspectRatioHDTV
-            }, false);
-
-            List<iMonLcdIcons> icons = new List<iMonLcdIcons>();
-            if (Settings.Default.ImonSoundSystemEnable)
-            {
                 if (Settings.Default.ImonSoundSystemSPDIF)
                 {
                     icons.Add(iMonLcdIcons.SpeakerSPDIF);
                 }
 
-                XbmcSoundSystems sound = (XbmcSoundSystems)Settings.Default.ImonSoundSystem;
+
                 if (sound == XbmcSoundSystems.Mono_1_0)
                 {
                     icons.Add(iMonLcdIcons.SpeakerCenter);
@@ -643,9 +602,123 @@ namespace iMon.XBMC
                             break;
                     }
                 }
+        }
+
+        private void updateIcons()
+        {
+            Logging.Log(LoggingArea, "Updating icons");
+
+            // Updating Speaker icons
+            this.display.SetIcons(new List<iMonLcdIcons>()
+            {
+                iMonLcdIcons.SpeakerFrontLeft, 
+                iMonLcdIcons.SpeakerCenter,
+                iMonLcdIcons.SpeakerFrontRight,
+                iMonLcdIcons.SpeakerSideLeft,
+                iMonLcdIcons.SpeakerLFE,
+                iMonLcdIcons.SpeakerSideRight,
+                iMonLcdIcons.SpeakerRearLeft,
+                iMonLcdIcons.SpeakerSPDIF,
+                iMonLcdIcons.SpeakerRearRight,
+
+                iMonLcdIcons.Music, 
+                iMonLcdIcons.Movie, 
+                iMonLcdIcons.Tv, 
+                iMonLcdIcons.Photo, 
+                iMonLcdIcons.Webcast, 
+                iMonLcdIcons.NewsWeather,
+
+                iMonLcdIcons.AudioMP3,
+                iMonLcdIcons.AudioOGG,
+                iMonLcdIcons.AudioWAV,
+                iMonLcdIcons.AudioWMA,
+
+                iMonLcdIcons.VideoAC3,
+                iMonLcdIcons.VideoDTS,
+                iMonLcdIcons.VideoMPGAudio,
+                iMonLcdIcons.VideoWMA,
+                iMonLcdIcons.VideoDivX,
+                iMonLcdIcons.VideoXviD,
+                iMonLcdIcons.VideoMPG,
+                iMonLcdIcons.VideoWMV,
+
+                iMonLcdIcons.AspectRatioTv,
+                iMonLcdIcons.AspectRatioHDTV
+            }, false);
+
+            if (Settings.Default.ImonSoundSystemEnable)
+            {
+                //XbmcSoundSystems sound = (XbmcSoundSystems)Settings.Default.ImonSoundSystem;
+                XbmcSoundSystems sound = getAudioChannels();
+                List<iMonLcdIcons> icons;
+
+                prepareSpeakerIcons(sound, out icons);
+                this.display.SetIcons(icons, true);
             }
 
-            this.display.SetIcons(icons, true);
+            //List<iMonLcdIcons> icons = new List<iMonLcdIcons>();
+            //if (Settings.Default.ImonSoundSystemEnable)
+            //{
+            //    if (Settings.Default.ImonSoundSystemSPDIF)
+            //    {
+            //        icons.Add(iMonLcdIcons.SpeakerSPDIF);
+            //    }
+
+            //    XbmcSoundSystems sound = (XbmcSoundSystems)Settings.Default.ImonSoundSystem;
+
+
+
+            //    if (sound == XbmcSoundSystems.Mono_1_0)
+            //    {
+            //        icons.Add(iMonLcdIcons.SpeakerCenter);
+            //    }
+            //    else
+            //    {
+            //        icons.Add(iMonLcdIcons.SpeakerFrontLeft);
+            //        icons.Add(iMonLcdIcons.SpeakerFrontRight);
+
+            //        switch (sound)
+            //        {
+            //            case XbmcSoundSystems.Stereo_2_1:
+            //                icons.Add(iMonLcdIcons.SpeakerLFE);
+            //                break;
+
+            //            case XbmcSoundSystems.Quad_4_0:
+            //                icons.Add(iMonLcdIcons.SpeakerRearLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerRearRight);
+            //                break;
+
+            //            case XbmcSoundSystems.Surround_5_0:
+            //                icons.Add(iMonLcdIcons.SpeakerRearLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerRearRight);
+            //                icons.Add(iMonLcdIcons.SpeakerCenter);
+            //                break;
+
+            //            case XbmcSoundSystems.Surround_5_1:
+            //                icons.Add(iMonLcdIcons.SpeakerRearLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerRearRight);
+            //                icons.Add(iMonLcdIcons.SpeakerCenter);
+            //                icons.Add(iMonLcdIcons.SpeakerLFE);
+            //                break;
+
+            //            case XbmcSoundSystems.Side_5_1:
+            //                icons.Add(iMonLcdIcons.SpeakerSideLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerSideRight);
+            //                icons.Add(iMonLcdIcons.SpeakerCenter);
+            //                icons.Add(iMonLcdIcons.SpeakerLFE);
+            //                break;
+
+            //            case XbmcSoundSystems.Surround_7_1:
+            //                icons.Add(iMonLcdIcons.SpeakerSideLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerSideRight);
+            //                icons.Add(iMonLcdIcons.SpeakerRearLeft);
+            //                icons.Add(iMonLcdIcons.SpeakerRearRight);
+            //                icons.Add(iMonLcdIcons.SpeakerCenter);
+            //                icons.Add(iMonLcdIcons.SpeakerLFE);
+            //                break;
+            //        }
+            //    }
+            //}
 
             if (Settings.Default.XbmcIconsPlaybackDiscEnable && this.playerState != PlayerState.Stopped)
             {
@@ -1248,6 +1321,52 @@ namespace iMon.XBMC
                     Logging.Log(LoggingArea, "Audio codec " + codec + " not supported by display");
                 }
             }
+        }
+
+        private XbmcSoundSystems getAudioChannels()
+        {
+            int channels = -1;
+            XbmcSoundSystems sound;
+
+            if (this.player != null)
+            {
+                if (this.player is XbmcAudioPlayer)
+                    channels = ((XbmcAudioPlayer) this.player).Channels;
+                else if (this.player is XbmcVideoPlayer)
+                    channels = ((XbmcVideoPlayer) this.player).AudioChannels;
+            }
+
+            Logging.Log(LoggingArea, "Retrieved audio channels number: " + channels);
+            
+            switch (channels)
+            {
+                case 0:
+                    sound = XbmcSoundSystems.Mono_1_0;
+                    break;
+                case 1:
+                    sound = XbmcSoundSystems.Stereo_2_0;
+                    break;
+                case 2:
+                    sound = XbmcSoundSystems.Stereo_2_1;
+                    break;
+                case 4:
+                    sound = XbmcSoundSystems.Quad_4_0;
+                    break;
+                case 5:
+                    sound = XbmcSoundSystems.Surround_5_0;
+                    break;
+                case 6:
+                    sound = XbmcSoundSystems.Surround_5_1;
+                    break;
+                case 8:
+                    sound = XbmcSoundSystems.Surround_7_1;
+                    break;
+                default:
+                    sound = (XbmcSoundSystems) Settings.Default.ImonSoundSystem;
+                    break;
+            }
+
+            return(sound);
         }
 
         private IDictionary<string, string> getVideoPlayerInfoLabels()

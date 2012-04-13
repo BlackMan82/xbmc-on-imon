@@ -29,7 +29,7 @@ namespace iMon.XBMC
 
         private System.Timers.Timer discRotation;
 
-        private const int DefaultDelay = 500;
+        private const int DefaultDelay = 1000;
 
         private const string LoggingArea = "Display Handler";
         private const bool LogDisplayingIcons = false;
